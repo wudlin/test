@@ -1,0 +1,132 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#giftCoupon  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#giftCoupon  header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#giftCoupon  header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#giftCoupon .content .buttons-tab{
+	position: fixed;
+	width: 100%;
+}
+#giftCoupon .content .buttons-tab .button{
+	padding: 0 .2rem;
+}
+#giftCoupon .content .tab{
+	margin-top: 2.6rem;
+}
+#giftCoupon .content .button.bor:after{
+	content: '';
+	width: 1px;
+	height: 1.4rem;
+	background-color: #D6D6D6;
+	position: absolute;
+	right: -1px;
+	top:.2rem;
+}
+#giftCoupon .tab .card{
+	margin:.6rem .825rem;
+	font-size: 0;
+}
+#giftCoupon .tab .card .card-content,#giftCoupon .flex{
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#giftCoupon .tab .gc-icon{
+	width: 3.575rem;
+	height: 5.125rem;
+	position: relative;
+	/*left: -6px;*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-size: 1rem;
+	color:#fff ;
+	text-align: center;
+	padding: 1.5rem 0;
+}
+#giftCoupon #tab1 .gc-icon0{
+	background-image: url(../../img/me/giftCoupon/redEnvelope.png);
+}
+#giftCoupon #tab1 .gc-icon1{
+	background-image: url(../../img/me/giftCoupon/deduction-off.png);
+}
+#giftCoupon .tab .gc-right{
+	width: calc(100% - 3.575rem);
+	padding: 1.25rem .725rem .5rem .625rem;
+	background-repeat: no-repeat;
+	background-size: 2.4rem 2.4rem;
+	background-position: right top; 
+}
+#giftCoupon .tab .gc-right.gcr-icon0{
+	background-image: url(../../img/me/giftCoupon/overdue.png);
+}
+#giftCoupon .tab .gc-right.gcr-icon1{
+	background-image: url(../../img/me/giftCoupon/used.png);
+}
+#giftCoupon .tab .gc-right .num{
+	font-size: .7rem;
+	line-height: .7rem;
+	color: #333;
+}
+#giftCoupon .tab .gc-right .time{
+	font-size: .7rem;
+	line-height: .7rem;
+	color: #666;
+	margin: .5rem 0;
+}
+#giftCoupon .tab .gc-right .bor{
+	height: 1px;
+	background-color: #DCDCDC;
+}
+#giftCoupon .tab .gc-right .validity{
+	font-size: .5rem;
+	line-height: .5rem;
+	color: #666;
+	margin-top: .45rem;
+}
+
+/*加息券页*/
+#giftCoupon #tab2 .gc-icon0{
+	background-image: url(../../img/me/giftCoupon/raise.png);
+}
+#giftCoupon #tab2 .gc-icon1{
+	background-image: url(../../img/me/giftCoupon/raise-off.png);
+}
+#giftCoupon .fixed{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #fff;
+	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	text-align: center;
+	padding: .225rem 0;
+}
+#giftCoupon .fixed .text{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#giftCoupon .fixed .num{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #333;
+	margin-top: .25rem;
+}

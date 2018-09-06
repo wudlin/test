@@ -1,0 +1,106 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#money-record  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border-bottom: none;
+}
+#money-record header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#money-record header h1.title{
+	height: 2.4rem;
+	font-size: .9rem;
+	line-height: 2.4rem;
+	color:#fff;
+}
+#money-record .card-content-inner{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+	padding: .6rem;
+}
+/*-------*/
+#money-record .card-content-inner .mr-left .mr-icon{
+	font-size: 0;
+}
+#money-record .card-content-inner .mr-left .mr-icon img{
+	width: 1.1rem;
+	height: 1.1rem;
+	vertical-align: middle;
+}
+#money-record .card-content-inner .mr-left .mr-icon .mr-title{
+	font-size: .7rem;
+	vertical-align: middle;
+	color: #3096FD;
+	margin-left: .55rem;
+}
+#money-record .card-content-inner .mr-left .mr-time{
+	margin-top: .6rem;
+	font-size: .45rem;
+	line-height: .45rem;
+	color: #666;
+}
+#money-record .card-content-inner .mr-right{
+	font-size: 0;
+	display: flex;
+	display: -webkit-flex;
+	width: 36%;
+}
+#money-record .card-content-inner .mr-right span{
+	display: inline-block;
+}
+#money-record .card-content-inner .mr-right .mr-icon{
+	width: .925rem;
+	height: .925rem;
+	font-size: .5rem;
+	border-radius: 50%;
+	background-color: #3096FD;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+#money-record .card-content-inner .mr-right .mr-num{
+	width: calc(100% - 1rem);
+	font-size: .9rem;
+	line-height: .9rem;
+	text-align: left;
+	color: #157A1E ;
+	margin-left: .5rem;
+}
+#money-record  .mr-cm{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	align-items: center;
+	-webkit-align-items: center;
+	background-color: #fff;
+	padding: .225rem 0;
+}
+#money-record  .mr-cm>div{
+	text-align: center;
+}
+#money-record  .mr-cm .text{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#money-record  .mr-cm .num{
+	font-size: .6rem;
+	line-height: .6rem;
+}

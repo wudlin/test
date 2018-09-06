@@ -1,0 +1,82 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+.bar .button-link{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color: #fff;
+	font-size: .9rem;
+}
+ header.bar{
+	height: 2.4rem;
+	background-color: #3096FD ;
+}
+ header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+ 
+ header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+.content .bg{
+	background-color: #fff;
+}
+ .content .ea1{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #333;
+}
+ .content .marL{
+	margin-left:.625rem ;
+}
+ .content .padd{
+	padding: .65rem 0;
+}
+ .content .ea2>div{
+	font-size: 0;
+}
+ .content .ea2 .borderb{
+	border-bottom: 1px solid #DCDCDC ;
+}
+ .content .ea2 .f075{
+	font-size: .75rem;
+	line-height: .75rem;
+}
+ .content .ea2 .color333{
+	color: #333;
+	margin-right: .6rem;
+}
+ .content .ea2 .orange{
+	color: #FC4F27;
+}
+.content .ve{
+	display: flex;
+	display: -webkit-flex;
+	align-content: center;
+	-webkit-align-items: center;
+}
+.content .ve input{
+	width: 60%;
+	height: .8rem;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	font-size:.75rem ;
+}
+.content  .sure{
+	height: 1.75rem;
+	font-size: .75rem;
+	line-height: 1.75rem;
+	color: #fff;
+	margin: .6rem;
+	background-color: #3096FD;
+}

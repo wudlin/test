@@ -1,0 +1,177 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     /* top: 2.4rem;  */
+}
+#recharge  header{
+	height: 2.4rem;
+	background-color: #FFF;
+	border-bottom: none;
+}
+#recharge  header a{
+	height: 2.4rem;
+	color: #3197FF;
+	line-height: 1.4rem;
+}
+#recharge  header a.rr{
+	font-size: .7rem;
+	line-height: 2.4rem;
+	vertical-align: middle;
+	top: 0;
+	border: none;
+}
+#recharge  header h1.title{
+	color:#000;
+	font-size: .9rem;
+	line-height: 2.4rem;
+}
+#recharge  .buttons-tab{
+	position: relative;
+	width: 100%;
+	/* top: 2.4rem; */
+}
+/* #recharge .content .buttons-tab{
+	position: fixed;
+	width: 100%;
+	border-bottom: none;
+} */
+#recharge .content .tab{
+	margin-top: .6rem;
+}
+#recharge #tab1 .bc{
+	padding:0 .5rem;
+	background-color: #fff;
+}
+#recharge #tab1 .bc .borderp{
+	font-size: .7rem;
+	line-height: .9rem;
+	color: #333;
+	border-bottom: 1px solid #999;
+	padding: .5rem .3rem;
+}
+#recharge #tab1 .bc .grey{
+	color: #666;
+}
+/*#recharge #tab1 .bc .gray{
+	color: #999;
+}*/
+#recharge #tab1 .bc .ra{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 0;
+	padding: .5rem .3rem;
+	
+}
+#recharge #tab1 .bc .ra .text{
+	font-size: .7rem;
+	line-height: .7rem;
+	color: #333;
+}
+#recharge #tab1 .bc .ra input{
+	border: none;
+	font-size: .7rem;
+	line-height: .7rem;
+	text-align: right;
+	padding: 0;
+}
+#recharge #tab1 .nobc{
+	padding:.6rem .65rem;
+	background-color: #fff;
+	margin-bottom: 8rem;
+}
+#recharge #tab1 .nobc .text{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#recharge #tab1 .nobc .gray{
+	color: #333;
+}
+#recharge #tab1 .rechargeBtn{
+	padding: 1.6rem;
+}
+#recharge #tab1 .rechargeBtn a{
+	height: 2rem;
+	line-height: 2rem;
+	font-size: .75rem;
+	background-color: #3197FF;
+}
+#recharge #tab1 .sec3-tips .underline{
+	color:#3197FF;
+	text-decoration: underline;
+}
+#recharge .tab .sec1{
+	background-color: #fff;
+	padding: .7rem .625rem;
+}
+#recharge .tab .sec1 .sec1-title{
+	font-size: .7rem;
+	line-height: 1rem;
+	color: #333;
+	font-weight: normal;
+	margin: 0;
+}
+#recharge .tab .sec1 table{
+	width: 100%;
+	border: 1px solid #999;
+	margin: .75rem 0;
+	text-align: center;
+}
+#recharge .tab .sec1 table th,#recharge #tab2 .sec1 table td{
+	font-size: .7rem;
+	line-height: 1.5rem;
+	color: #666;
+	font-weight: normal;
+}
+
+#recharge .tab .sec1 table td{
+	/* width: 60%; */
+	padding-left:.75rem;
+}
+#recharge .tab .sec1 .sec1-tip{
+	font-size: .7rem;
+	line-height: 1.4rem;
+	color: #FF0000;
+	margin: 0;
+}
+#recharge #tab2 .sec2{
+	margin: .75rem 0 0 0;
+}
+#recharge #tab2 .sec2 img{
+	width: 100%;
+	vertical-align: middle;
+}
+#recharge .tab .sec3 .sec3-tips{
+	font-size: .6rem;
+	line-height: 1.2rem;
+	color: #666;
+	text-align: justify;
+	padding:1.5rem .6rem;
+	margin: 0;
+}
+#recharge .tab  .sec3 .ins{
+	display: flex;
+	display: -webkit-flex;
+	padding:1.8rem .6rem 0;
+	position: relative;
+}
+#recharge .tab  .sec3 .ins .dashed{
+	width:40%;
+	border-bottom: 1px dashed  #666;
+	position: relative;
+	top: -.3rem;
+}
+#recharge .tab  .sec3 .ins .text{
+	width: 20%;
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+	text-align: center;
+}
+#recharge #tab3 .sec3 .sec3-tips,#recharge #tab1 .sec3 .sec3-tips{
+	padding-top: .6rem;
+}

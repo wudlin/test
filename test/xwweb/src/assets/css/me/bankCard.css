@@ -1,0 +1,72 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#bankCard  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#bankCard  header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#bankCard  header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#bankCard  .content .bcInfo{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	height: 5rem;
+	padding: .6rem;
+	margin: .6rem;
+}
+#bankCard .content .bg{
+	background-image: url(../../../../static/img/me/bankCard/bank.png);
+	background-repeat:no-repeat;
+	background-size: 100% 100%;
+}
+#bankCard .content .bc-color{
+	color: #F7F6FB;
+}
+#bankCard .content .marT{
+	margin-top: .6rem;
+}
+#bankCard .content .fz075{
+	font-size: .75rem;
+	line-height: .75rem;
+}
+#bankCard .content .fz06{
+	font-size: .6rem;
+	line-height: .6rem;
+}
+#bankCard  .content .bcInfo .bc-num{
+	padding-top: 2.8rem;
+}
+#bankCard .content .button-fill{
+	height: 1.75rem;
+	line-height: 1.75rem;
+	border-radius: .15rem;
+	margin: .6rem;
+}
+#bankCard .content .sync{
+	background-color: #3096FD;
+}
+#bankCard .content .unbundle{
+	background-color: #FD871F ;
+}
+#bankCard .content .bc-tip{
+	margin:1rem .6rem;
+	font-size: .5rem;
+	line-height: .5rem;
+	color: #6E6E6E;
+	text-align: center;
+}

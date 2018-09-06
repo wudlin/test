@@ -1,0 +1,251 @@
+@import "../common.css";
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#refund-calendar  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border-bottom: none;
+}
+#refund-calendar header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#refund-calendar header h1.title{
+	height: 2.4rem;
+	font-size: .9rem;
+	line-height: 2.4rem;
+	color:#fff;
+}
+#refund-calendar #calendar{
+	background-color: #fff;
+	box-shadow: .5rem 0 .5rem rgba(0,0,0,.2);
+}
+#refund-calendar .rc1,#refund-calendar .rc2{
+	width: 100%;
+	background-color: #fff;
+	padding: .6rem;
+	margin: .6rem 0;
+}
+#refund-calendar .rc1{
+	box-shadow: .5rem 0 .5rem rgba(0,0,0,.2);
+	padding: 0 .6rem .6rem;
+}
+#refund-calendar .rc1 .cale-head,#refund-calendar .rc1 .swiper-container .pai,#refund-calendar .rc2{
+	/* display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between; */
+	align-items: center;
+	/* -webkit-align-items: center; */
+}
+#refund-calendar .rc1 .cale-head{
+	line-height: .825rem;
+}
+#refund-calendar .rc1 .cale-head>div{
+	width: 50%;
+}
+#refund-calendar .rc1 .cale-head .cale-icon{
+	display: inline-block;
+	width: .85rem;
+	height: .825rem;
+	background-image: url(../../../../static/img/me/refund-calendar/Calendar.png);
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+#refund-calendar .rc1 .cale-head .text{
+	font-size: .65rem;
+	line-height: .65rem;
+	color: #333;
+}
+#refund-calendar #select-cale{
+	font-size: .65rem;
+	line-height: .65rem;
+	color: #333;
+	text-align: right;
+} 
+#refund-calendar .swiper-container{
+	padding: .5rem 0;
+}
+#refund-calendar .rc1 .pai{
+	/* display: flex;
+	justify-content: space-around;
+	-webkit-justify-content:  space-around; */
+	/* padding: 0 1.1rem; */
+	line-height: 2rem;
+	position: relative;
+	height: 2.5rem;
+	/* justify-content: space-around; */
+}
+
+#refund-calendar .rc1 .com{
+	text-align: center;
+	display: inline-block;
+	/* width: 5.5rem; */
+}
+#refund-calendar .rc1 .pai .r6{
+	position: absolute;
+	right: 6rem;
+}
+#refund-calendar .rc1 .pai .r0{
+	position: absolute;
+	right: 0;
+}
+
+@media (min-width:360px){
+	#refund-calendar .rc1 .com{
+		width: 5rem;
+	}
+}
+@media (min-width:375px){
+	#refund-calendar .rc1 .com{
+		width: 5.5rem;
+	}
+}
+#refund-calendar .rc1 .orange{
+	font-size: .9rem;
+	line-height: .9rem;
+	color: #FF5028;
+}
+#refund-calendar .rc1 .yuan{
+	font-size: .65rem;
+	line-height: .65rem;
+	color: #333;
+}
+#refund-calendar .rc1 .grey{
+	font-size: .5rem;
+	line-height: .5rem;
+	color: #999;
+}
+#refund-calendar  .swiper-button-next,#refund-calendar .swiper-button-prev{
+	background-image: none;
+}
+#refund-calendar .swiper-button-next{
+	right: 0;
+	text-align: right;
+}
+#refund-calendar .swiper-button-prev{
+	left: 0;
+	text-align: left;
+}
+#refund-calendar .swiper-button-next a,#refund-calendar .swiper-button-prev a{
+	font-size: 1rem;
+	line-height: 44px;
+	color: #999;
+}
+#refund-calendar .rc2 .rt{
+	width:12%;
+	font-size: .75rem;
+	color: #333;
+}
+#refund-calendar .rc2 .main{
+	width: 88%;
+}
+#refund-calendar .rc2 .swiper-container .rt-content{
+	width: 100%;
+	display: flex;
+	display: -webkit-flex;
+	/*justify-content: space-between;
+	-webkit-justify-content: space-between;*/
+	align-items: center;
+	-webkit-align-items: center;
+	padding: 0 .8rem;
+	
+}
+#refund-calendar .rc2 .swiper-container .rt-content>div{
+	width: 20%;
+	margin:0 .2rem;
+}
+#refund-calendar .rc2 .swiper-container .rt-content .top{
+	font-size:.3rem;
+	line-height: .3rem;
+	color: #fff;
+	text-align: center;
+	padding: .3rem;
+	background-color: #3096FD;
+	border-radius:.25rem .25rem 0 0;
+}
+#refund-calendar .rc2 .swiper-container .rt-content .bottom{
+	font-size:.7rem;
+	line-height: .7rem;
+	color: #333;
+	text-align: center;
+	padding: .5rem;
+	border: 1px solid #9B9B9B;
+	border-top: none;
+	border-radius:0 0 .25rem .25rem ;
+}
+#refund-calendar .rc3{
+	display: flex;
+	display: -webkit-flex;
+	background-color: #fff;
+	box-shadow: .5rem 0 .5rem rgba(0,0,0,.2);
+	padding: .6rem;
+}
+#refund-calendar .rc3 .rc3-1{
+	width: 32%;
+	border-right: 1px solid #DCDCDC;
+	padding: .6rem .6rem .6rem 0;
+}
+#refund-calendar .rc3 .rc3-1 .orange{
+	font-size: .9rem;
+	line-height: .9rem;
+	color: #FD7945;
+	text-align: center;
+}
+#refund-calendar .rc3 .rc3-1 .color9{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #999;
+	margin-top: .5rem;
+	text-align: center;
+}
+#refund-calendar .rc3 .rc3-2 {
+	padding: .6rem 0 .6rem .6rem;
+}
+#refund-calendar .rc3 .rc3-2 .color6{
+	font-size: .7rem;
+	line-height: .7rem;
+	color: #666;
+}
+#refund-calendar .rc3 .rc3-2 .flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#refund-calendar .rc3 .rc3-2 .marT{
+	margin-top: .8rem;
+	width: 11rem;
+}
+#refund-calendar .rc3 .rc3-2 .color9{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #999;
+}
+#refund-calendar .rc3 .rc3-2 .marL{
+	margin-left: .65rem;
+	float: none;
+}
+#refund-calendar .rc3 .rc3-2 .color3{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+	/* float: right; */
+}
+#refund-calendar .rc3 .rc3-2 .blue{
+	font-size: .75rem;
+	color: #5F98FD;
+}
+
+.select{
+	border:1px solid #5F98FD;
+	border-radius: 70%;
+}

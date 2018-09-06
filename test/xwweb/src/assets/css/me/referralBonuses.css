@@ -1,0 +1,211 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#referralBonuses  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border: none;
+}
+#referralBonuses  header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#referralBonuses  header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#referralBonuses  header img{
+	width: 1.2rem;
+	margin-top: .65rem;
+}
+#referralBonuses .content {
+	margin-bottom: 2.4rem;
+}
+#referralBonuses .content .fixed{
+	width: 100%;
+	position: relative;
+}
+#referralBonuses .content .con-head img{
+	width: 100%;
+	display: block;
+}
+#referralBonuses .content .bg{
+	background-color: #fff;
+}
+#referralBonuses .content .flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#referralBonuses .content .w10{
+	width: 10%;
+}
+#referralBonuses .content .w15{
+	width: 15%;
+}
+#referralBonuses .content .w20{
+	width: 20%;
+}
+#referralBonuses .content .w25{
+	width: 25%;
+}
+#referralBonuses .content .w30{
+	width: 30%;
+}
+#referralBonuses .content .flex>div{
+	font-size: .75rem;
+	line-height: .75rem;
+	text-align: center;
+}
+#referralBonuses .content .rb-head{
+	position: relative;
+	padding:.5rem 0rem;
+}
+#referralBonuses .content .rb-head.fixedHead{
+	position: fixed;
+	top: 2.4rem;
+}
+#referralBonuses .content .rb-head>div{
+	color: #666;
+}
+#referralBonuses .content .rb-list{
+	/* margin-top: 1.75rem; */
+	padding: 0 .2rem;
+}
+#referralBonuses .content .rb-list .borderb{
+	border-bottom: 1px solid #DCDCDC;
+}
+#referralBonuses .content .rb-list .flex{
+	padding: .825rem 0;
+}
+#referralBonuses .content .rb-list .flex>div{
+	color: #333;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#referralBonuses .screen{
+	position: fixed;
+	z-index: 10001;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.2);
+}
+#referralBonuses .extractLayer,#referralBonuses .tipLayer{
+	position: fixed;
+	z-index: 10002;
+	width: 12rem;
+	height: 8rem;
+	top: calc(50% - 4rem);
+	left: calc(50% - 6rem);
+	background-color: #fff;
+}
+#referralBonuses .extractLayer .fz06{
+	font-size: .6rem;
+	line-height: .6rem;
+}
+#referralBonuses .extractLayer .fz75{
+	font-size: .75rem;
+	line-height: .75rem;
+}
+#referralBonuses .extractLayer .colorGray{
+	color: #666;
+}
+#referralBonuses .extractLayer .colorOrange{
+	color: #FD871F;
+}
+#referralBonuses .extractLayer .sec1{
+	padding: .6rem;
+}
+#referralBonuses .extractLayer .sec1 .line2{
+	margin: .5rem 0;
+}
+#referralBonuses .extractLayer .sec1 .line3 input{
+	width: 7.5rem;
+	height: 1rem;
+	margin-left: .5rem;
+	padding: 1px .6rem 1px .6rem;
+	vertical-align: middle;
+	font-size: .75rem;
+	border: 1px solid #DCDCDC;
+}
+#referralBonuses .extractLayer .sec2{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	font-size: 0;
+	text-align: center;
+}
+#referralBonuses .extractLayer .sec2>div{
+	display: inline-block;
+	width: 50%;
+	line-height: 1.5rem;
+}
+#referralBonuses .extractLayer .sec2 .close{
+	border-top: 1px solid  #DCDCDC;
+}
+#referralBonuses .extractLayer .sec2 .extract{
+	color: #fff;
+	background-color: #3096FD;
+	border-top: 1px solid  #3096FD;
+}
+#referralBonuses .BtnArea{
+	position: fixed;
+	bottom: 0;
+	z-index: 10000;
+	width: 100%;
+	font-size: 0;
+}
+#referralBonuses .BtnArea>div{
+	display: inline-block;
+	width: 50%;
+	font-size: .75rem;
+	line-height: 2.2rem;
+	text-align: center;
+}
+#referralBonuses .BtnArea .extractBtn{
+	color: #3096FD;
+	background-color: #fff;
+	border-top: 1px solid #DCDCDC;
+}
+#referralBonuses .BtnArea .fecfBtn{
+	color: #fff;
+	background-color: #3096FD;
+	border-top: 1px solid #3096FD;
+}
+/*.modal {
+	word-wrap: break-word ;
+}*/
+#referralBonuses .tipLayer{
+	border-radius: .6rem;
+	height: 6rem;
+	top: calc(50% - 3rem);
+	text-align: center;
+}
+#referralBonuses .tipLayer .titleArea{
+	font-size: .8rem;
+	line-height: 1rem;
+	white-space: normal;
+	word-wrap: break-word;
+	padding: .6rem;
+}
+.modal{
+	word-wrap: break-word;
+}
+#referralBonuses .tipLayer .sureBtn{
+	width: 100%;
+	color: #3096FD;
+	line-height: 2rem;
+	position: absolute;
+	bottom: 0;
+	border-top: 1px solid #DCDCDC;
+}

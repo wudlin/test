@@ -1,0 +1,588 @@
+
+*{
+	font-family: 'Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif';
+	box-sizing: border-box;}
+p{
+	margin: 0;
+}
+
+/*.page-from-center-to-left {
+	-webkit-animation: pageFromCenterToLeft 0ms forwards;
+	animation: pageFromCenterToLeft 0ms forwards;
+}
+
+.page-from-left-to-center {
+	-webkit-animation: pageFromLeftToCenter 0ms forwards;
+	animation: pageFromLeftToCenter 0ms forwards;
+}
+
+.page-from-right-to-center {
+	-webkit-animation: pageFromRightToCenter 0ms forwards;
+	animation: pageFromRightToCenter 0ms forwards;
+	z-index: 2002;
+}
+
+.page-from-center-to-right {
+	-webkit-animation: pageFromCenterToRight 0ms forwards;
+	animation: pageFromCenterToRight 0ms forwards;
+	z-index: 2002;
+}*/
+.bar-tab{
+	height: 2.45rem;
+}
+.bar-tab .tab-item{
+	font-size: 0;
+	padding: 2px 0;
+}
+
+.bar-tab .tab-item .tab-label{
+	font-size:0.75rem ;
+}
+.bar-tab .tab-item .tab-label.gray{
+	color: rgb(146, 146, 146);
+
+}
+.bar-tab .tab-item .tab-label.blue{
+	color:rgb(8, 148, 236);
+}
+.bar-tab .tab-item .icon~.tab-label{
+	top: 0 !important;
+}
+.bar .tab-item img{
+	width: 1.2rem;
+	height: 1.2rem;
+}
+.bar .tab-item .tab-label{
+	font-size: .7rem;
+}
+#index .bar-nav~.content {
+     /* top: 2.4rem;  */
+     margin-bottom: 2.5rem;
+}
+.card{
+	margin: 0.6rem;
+}
+.card-content-inner{
+	padding: 0.6rem;
+}
+/*#app{
+	position: relative;
+}*/
+
+
+#crtrs>header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#crtrs>header>h1{
+	font-family: PingFang-SC-Regular !important;
+	color: #fff;
+	font-size: 1rem;
+	line-height:2.4rem;
+}
+#crtrs>header>a{
+	height: 2.4rem;
+	color: #fff;
+	font-size:1rem;
+	line-height: 2.4rem;
+	font-weight: lighter;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	padding: 0;
+}
+#crtrs>header>a.xwsd-menu{
+	background-image: url(../../../static/img/common/menu-@1x.png);
+	width: 2.4rem;
+	height: 2.4rem;
+	background-size: 1.1rem 1.1rem;
+	position: relative;
+	line-height: 2.4rem;
+	background-position: right center;
+}
+#crtrs .content{
+	/* top: 2.4rem; */
+	margin-bottom: 2.4rem;
+}
+#crtrs  .buttons-tab{
+	position: relative;
+	width: 100%;
+	z-index: 106;
+	top: 2.4rem
+}
+#crtrs .buttons-tab .button{
+	height: 2.2rem;
+	line-height: 2.2rem;
+	font-size: 0.9rem;
+	padding: 0;
+}
+#crtrs  .buttons-tab .selectBtn{
+	display: none;
+	width: 1.3rem;
+	height: 2rem;
+	background-image: url(/static/img/common/dropdown1.png);
+	background-repeat: no-repeat;
+	/* background-size: 33% 40%; */
+	background-position: center;
+	position: absolute;
+	/* right: -7%; */
+	top: .1rem;
+}
+#crtrs header .button{
+	border: none;
+	top: 0;
+}
+#crtrs .buttons-tab .dark{
+	background-image: url(/static/img/common/dropdown.png);
+}
+#crtrs  .buttons-tab .down{
+	background-image: url(/static/img/common/dropdown2.png);
+
+}
+#crtrs .button.bor:after{
+	content: '';
+	width: 1px;
+	height: 1.6rem;
+	background-color: #D6D6D6;
+	position: absolute;
+	right: -1px;
+	top: 0.3rem;
+}
+
+#crtrs .content .tabs{
+	position: relative;
+	padding-top: 0!important;
+}
+#crtrs  .selectItem{
+	width: 100%;
+	z-index: 100005;
+	background-color: #fff;
+	padding:.5rem .6rem .7rem .6rem;
+	font-size: 0;
+	position: fixed;
+	display: none;
+	top: 2.4rem;
+}
+#crtrs  .selectItem div{
+	margin: 0;
+}
+#crtrs  .selectItem div p{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #666;
+	margin:.4rem 0 .2rem 0;
+}
+@media (max-width:320px){
+	#crtrs  .selectItem li{
+		width: 3.45rem;
+		font-size: .6rem;
+	}
+}
+@media (min-width:320px){
+	#crtrs  .selectItem li{
+		width: 3.45rem;
+		font-size: .6rem;
+	}
+}
+@media (min-width:360px){
+	#crtrs  .selectItem li{
+		width: 3.9rem;
+		font-size: .7rem;
+	}
+}
+@media (min-width:375px){
+	#crtrs  .selectItem li{
+		width: 4.16rem;
+		font-size: .7rem;
+	}
+}
+#crtrs  .selectItem li{
+	display: inline-block;
+		white-space: nowrap;
+		line-height: .7rem;
+		text-align: center;
+		color: #333;
+		background-color:#E9E9E9 ;
+		border: 1px solid transparent;
+		border-radius: .6rem;
+		padding: .3rem 0 .3rem 0 ;
+		margin:.3rem .3rem .3rem 0 ;
+}
+#crtrs  .selectItem ul li:nth-child(4n){
+	margin-right: 0;
+}
+/* #crtrs  .selectItem .borrowM li:nth-child(4n){
+	margin-right: 0;
+}
+#crtrs  .selectItem .borrowTime li:nth-child(4n){
+	margin-right: 0;
+} */
+/* #crtrs  .selectItem .borrowTime dd:nth-child(9){
+	margin-right: 0;
+}
+#crtrs  .selectItem .borrowTime dd:nth-child(13){
+	margin-right: 0;
+}
+#crtrs  .selectItem .borrowTime dd:nth-child(17){
+	margin-right: 0;
+} */
+#crtrs  .selectItem li.select{
+	color: #3096FD;
+	background-color: #fff;
+	border: 1px solid #3096FD;
+}
+#crtrs #screen{
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 6.45rem);
+	bottom: 0;
+	z-index: 10000;
+	background-color: rgba(0,0,0,.2);
+	/* display: none; */
+}
+/*与首页列表一致*/
+#crtrs .content .card{
+	background-repeat: no-repeat;
+	background-size:2.5rem 2.5rem;
+	background-position: right top; 
+	border-radius: .4rem;
+}
+#crtrs .content .bid .bid-title{
+	font-size: 0;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#crtrs .content .bid .bid-title>span{
+	display: inline-block;
+	vertical-align: middle;
+}
+#crtrs .content .bid .bid-title .title-icon{
+	width: .8rem;
+	height: .8rem;
+	background-size: 100% 100%;
+	background-position: center center; 
+}
+#crtrs #tab1 .bid .bid-title .zi{
+	background-image: url(../../../static/img/common/auto-@1x.png);
+}
+#crtrs #tab1 .bid .bid-title .zi1{
+	background-image: url(../../../static/img/common/auto.png);
+}
+#crtrs #tab1 .bid .bid-title .hand{
+	background-image: url(../../../static/img/common/handle-@1x.png);
+}
+#crtrs #tab1 .bid .bid-title .hand1{
+	background-image: url(../../../static/img/common/Manual.png);
+}
+#crtrs .content .run{
+	background-image: url(../../../static/img/common/full-scale.png);
+}
+#crtrs .content .full{
+	background-image: url(../../../static/img/common/full-scale1.png);
+}
+#crtrs .content .tofill{
+	background-image: url(../../../static/img/common/tofill.png);
+}
+#crtrs .content .end{
+	background-image: url(../../../static/img/common/end.png);
+}
+#crtrs .content .review{
+	background-image: url(../../../static/img/common/review.png);
+}
+#crtrs .content .autofinance{
+	background-image: url(../../../static/img/common/autofinance.png);
+}
+#crtrs .content .autofinance1{
+	background-image: url(../../../static/img/common/autofinance1.png);
+}
+#crtrs .content .bid .bid-title .xiao{
+	background-image: url(../../../static/img/common/xiao.png);
+}
+#crtrs .content .bid .bid-title .xiao1{
+	background-image: url(../../../static/img/common/xiao1.png);
+}
+#crtrs .content .bid .bid-title .xing{
+	background-image: url(../../../static/img/common/xing.png);
+}
+#crtrs .content .bid .bid-title .yutou{
+	background-image: url(../../../static/img/common/yutou.png);
+}
+#crtrs .content .bid .bid-title .yutou1{
+	background-image: url(../../../static/img/common/yutou1.png);
+}
+#crtrs  .nolightc{
+	color: #999 !important;
+}
+#crtrs #tab1 .bid-title .title-icon0,#crtrs #tab1 .review .bid-title .title-icon0{
+	background-image: url(../../../static/img/common/auto.png);
+}
+#crtrs #tab1 .bid-title .title-icon1,#crtrs #tab1 .review .bid-title .title-icon1,#crtrs #tab1 .tofill .bid-title .title-icon1{
+	background-image: url(../../../static/img/common/Manual.png);
+}
+#crtrs .content .bid .bid-title>.text{
+	color: #000;
+	font-size: 0.8rem;
+	line-height: .8rem;
+	margin-left: 0.4rem;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space:nowrap;
+	display: inline-block;
+	width: 90%;
+}
+#crtrs .content .bid .bid-content{
+	display: flex;
+	display: -webkit-flex;
+	/* justify-content: space-between; */
+	margin-top:0.75rem;
+}
+#crtrs .content .bid .bid-content .m,#crtrs .t,#crtrs .r{
+	flex-basis: 33%;
+}
+#crtrs .content .bid .bid-content>div>div{
+	text-align: center;
+}
+#crtrs .content .bid .bid-content .m .num{
+	text-align: left;
+}
+#crtrs .content .bid .bid-content .m .text{
+	text-align: left;
+}
+#crtrs .content .bid .bid-content .r .num{
+	text-align: right;
+}
+#crtrs .content .bid .bid-content .r .text{
+	text-align: right;
+}
+#crtrs .content .bid .bid-content .num>span:nth-child(1){
+	color: #333;
+	font-size: 1rem;
+}
+#crtrs .content .bid .bid-content .num>span:nth-child(2){
+	color: #333;
+	font-size: 0.75rem;
+}
+#crtrs .content .bid .bid-content .num{
+	vertical-align: bottom;
+}
+#crtrs .content .bid .bid-content .r .num{
+	color: #FD871F;
+	font-size: 1rem;
+}
+#crtrs .content .bid .bid-content .r .num .oddReward{
+	font-size: .6rem;
+	color: #FD871F;
+}
+#crtrs .content .bid .bid-content .r .num .nooddReward{
+	font-size: .6rem;
+	color: #999;
+}
+#crtrs .content .bid .bid-content .text{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+}
+#crtrs .content .bid .pro{
+	width: 100%;
+	height: .35rem;
+	line-height: .35rem;
+	position: relative;
+	margin-top: .55rem;
+}
+#crtrs .content .bid .pro .progress{
+	width: 100%;
+	height: .2rem;
+	position: absolute;
+	background-color:#D5DBED ;
+	border-radius: .1rem;
+}
+#crtrs .content .bid .pro .progress .fill{
+	position: absolute;
+	width: 60%;
+	height: .35rem;
+	top:-.075rem;
+	background-image: url(../../../static/img/common/progressUp-@1x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: left center; 
+	border-radius: .175rem;
+}
+#crtrs .content .debt .debt-title{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	margin-bottom: .75rem;
+}
+#crtrs .content .rate,#crtrs .content .time,#crtrs .content .remain-money{
+	flex-basis: 33%;
+}
+#crtrs .content .debt .debt-title>div{
+	font-size: .75rem;
+	line-height: .75rem;
+}
+#crtrs .content .debt .debt-title .name{
+	text-align: left;
+	margin-left: .025rem;
+	white-space: nowrap;
+}
+#crtrs .content .debt .debt-title .reduced{
+	color: red;
+	border: 1px solid red;
+	border-radius: 20%;
+	font-size: 0.6rem;
+}
+#crtrs .content .debt .debt-title .type{
+	color: #3096FD;
+	text-align: right;
+	margin-right: .05rem;
+}
+
+#crtrs .content .debt .progress{
+	width: 100%;
+	height: .2rem;
+	position: relative;
+	background-color:#D5DBED ;
+	border-radius: .1rem;
+}
+#crtrs .content .debt .progress .fill{
+	position: absolute;
+	/*width: 90%;*/
+	height: .35rem;
+	top: -.075rem;
+	background-image: url(../../../static/img/common/progressUp-@1x.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: left center; 
+	border-radius: .175rem;
+}
+#crtrs .content .debt .debt-detail{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	margin-top: .775rem;
+}
+#crtrs .content .debt .debt-detail .num{
+	font-size: .75rem;
+	line-height: .75rem;
+	text-align: center;
+	color:#000 ;
+}
+#crtrs .content .debt .debt-detail .rate .num{
+	text-align: left;
+}
+#crtrs .content .debt .debt-detail .remain-money .num{
+	text-align: right;
+}
+#crtrs .content .debt .debt-detail .rate .num{
+	color: #FD871F;
+}
+#crtrs .content .debt .debt-detail .text{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+	text-align: center;
+	margin-top: .275rem;
+} 
+#crtrs .content .debt .debt-detail .rate .text{
+	text-align: left;
+}
+#crtrs .content .debt .debt-detail .remain-money .text{
+	text-align: right;
+}
+#crtrs #tab2 .sell{
+	background-image: url(../../../static/img/common/sell.png);
+}
+#crtrs .content-header{
+	background: #fff;
+	display: inline-block;
+	width: 92%;
+	margin: 4% 4% 0;
+	border-radius: .4rem;
+	position: relative;
+}
+#crtrs .content-header .discount{
+	margin-left: 0.5rem;
+	color: #3096FD;
+	width: 4rem;
+}
+#crtrs .content-header .discount span{
+	font-size: .6rem;
+}
+#crtrs .content-header .discount .icon-up{
+	position: absolute;
+	left: 2.4rem;
+	top: -1px;
+}
+#crtrs .content-header .discount .icon-down{
+	position: absolute;
+	bottom: -1px;
+	left: 2.4rem;
+}
+#crtrs .content-header .cut{
+	position: absolute;
+	right: 0;
+	width: 4rem;
+	top: 0;
+}
+#crtrs .content-header .discount .black{
+	color: #000;
+}
+
+
+.disb{
+	display: block!important;
+}
+.disn{
+	display: none;
+}
+.disib{
+	display: inline-block!important;
+}
+.screenTip{
+	background: #fff;
+	width: 11.5rem;
+	height: 13rem;
+	position: relative;
+	margin: 50% auto;
+	text-align: center;
+	font-size: 1rem;
+	border-radius: 0.2rem;
+	z-index: 11000;
+	/* display: none; */
+	/* 23 26 */
+}
+.screenTip .til{
+	background: url(/static/img/index/authorization.png) scroll center top no-repeat;
+	height: 5.5rem;
+}
+.screenTip .st1{
+	height: 5.5rem;
+	overflow: hidden;
+	padding: .75rem 2rem;
+}
+.screenTip .st1 div{
+	line-height: 2rem;
+}
+.screenTip .st2 button{
+	border: none;
+	width: 9.5rem;
+	height: 1.5rem;
+	background: #3096FD;
+	color: #FFF;
+	border-radius: 0.75rem;
+}
+.screen{
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10600;
+    width: 100%;
+    height: 100%;
+    /* visibility: hidden; */
+	background: rgba(0,0,0,.4);
+	/* display: none; */
+}
+
+

@@ -1,0 +1,90 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#supportBankList .content{
+	top:2.4rem !important;
+}
+#supportBankList .bluebanner{
+	position: fixed;
+	width: 100%;
+	top: 2.4rem;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-around;
+	-webkit-justify-content: space-around;
+	background-color: #3197FF;
+	padding: .45rem 0;
+	color: #fff;
+	z-index: 10;
+}
+#supportBankList .bluebanner div{
+	font-size: .8rem;
+	line-height: .8rem;
+}
+#supportBankList .allbc{
+	position: relative;
+	background-color: #fff;
+	padding: 0 .5rem;
+	top: 1.7rem;
+}
+#supportBankList .allbc li{
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	color: #333;
+	padding:.5rem .6rem ;
+	border-bottom: 1px solid #999;
+}
+
+#supportBankList .allbc li:last-child{
+	border: none;
+}
+#supportBankList .allbc li .allbc1{
+	width: 55%;
+	font-size: 0;
+	line-height: .8rem;
+	vertical-align: middle;
+	text-align: left;
+}
+#supportBankList .allbc li .allbc1 span,#supportBankList .allbc li .allbc2{
+	font-size: .7rem;
+	line-height: .7rem;
+	vertical-align: middle;
+	display: inline-block;
+}
+#supportBankList .allbc li .allbc1 img{
+	width: .8rem;
+	height: .8rem;
+	border-radius: 50%;
+	/*background-color: #3197FF;*/
+	vertical-align: middle;
+	margin-right: .6rem;
+}
+#supportBankList .allbc li .allbc1 span{
+	line-height: .6rem;
+}
+#supportBankList .allbc li .allbc2{
+	width: 50%;
+	text-align: right;
+}
+#supportBankList  header{
+	height: 2.4rem;
+	background-color: #FFF;
+	border-bottom: none;
+}
+#supportBankList  header a{
+	height: 2.4rem;
+	color: #3197FF;
+	line-height: 1.4rem;
+}
+#supportBankList   header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	font-size: .9rem;
+}

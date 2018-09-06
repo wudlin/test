@@ -1,0 +1,81 @@
+*{
+	font-family: PingFang-SC-Regular;
+}
+#login .content{
+	background-color: #fff;
+}
+#login .content .del{
+	width: 1.35rem;
+	height: 1.35rem;
+	background-image: url(../../img/index/close.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	line-height: .675rem;
+	margin: .765rem .615rem;
+	float: right;
+}
+#login .content .login-title{
+	width: 100%;
+	margin-top: 2.415rem;
+	text-align: center;
+	font-size: 1.2rem;
+	line-height: 1.2rem;
+	color: #666;
+	clear: both;
+}
+#login .content .login-main{
+	padding:3.65rem 2.8rem;
+}
+#login .content .login-main .underline{
+	border-bottom: 1px solid #8B8B8B;
+	padding: .25rem;
+	display: flex;
+	display: -webkit-flex;
+	vertical-align: bottom;
+}
+#login .content .login-main .username .icon{
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-right: .675rem;
+	background-image: url(../../img/index/phone.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#login .content .login-main .underline>input{
+	width: 80%;
+	outline: 0;
+	border: none;
+	color: #666;
+	font-size: .75rem;
+	vertical-align: bottom;
+}
+#login .content .login-main .password {
+	margin: 1.125rem 0 1.325rem 0;
+}
+#login .content .login-main .password .icon{
+	width: 1.1rem;
+	height: 1.1rem;
+	margin-right: .675rem;
+	background-image: url(../../img/index/pas.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+#login .content .login-main .login-btn{
+	height: 1.5rem;
+	background-color: #3096FD;
+	font-size: .75rem;
+	line-height: 1.5rem;
+	border-radius: .75rem;
+}
+#login .content .login-main .rf{
+	margin-top: .75rem;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+}
+#login .content .login-main .rf>a{
+	color:#3096FD;
+	font-size: .65rem;
+	line-height: .65rem;
+}

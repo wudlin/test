@@ -1,0 +1,196 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+input{
+	border: none;
+	padding: 0;
+}
+#auto-bid-setting2 .label-switch,#auto-bid-setting2 .label-switch input[type=checkbox],#auto-bid-setting2 .label-switch input[type=checkbox]{
+	width: 1.8rem;
+	height: 1rem;
+}
+#auto-bid-setting2 .content .ab2 .label-switch input[type=checkbox]{
+	right: 0;
+}
+#auto-bid-setting2 .label-switch .checkbox{
+	width: 1.8rem;
+	height: 1rem;
+	border-radius: .5rem;
+}
+#auto-bid-setting2 .label-switch input[type=checkbox]:checked+.checkbox{
+	background: #3096FD;
+}
+#auto-bid-setting2 .label-switch .checkbox:before{
+	width: 1.6rem;
+	height: .8rem;
+}
+#auto-bid-setting2 .label-switch .checkbox:after{
+	width: .9rem;
+	height: .9rem;
+	top: .05rem;
+}
+#auto-bid-setting2 .label-switch input[type=checkbox]:checked+.checkbox:after{
+	-webkit-transform: translateX(.8rem);
+    -ms-transform: translateX(.8rem);
+    -o-transform: translateX(.8rem);
+    transform: translateX(.8rem);
+}
+#auto-bid-setting2  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border-bottom: none;
+}
+#auto-bid-setting2 header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#auto-bid-setting2 header a.rr{
+	line-height: 2.4rem;
+	vertical-align: middle;
+}
+#auto-bid-setting2 header h1.title{
+	height: 2.4rem;
+	font-size: .9rem;
+	line-height: 2.4rem;
+	color:#fff;
+}
+#auto-bid-setting2 .content .padb{
+	padding: .6rem 1rem;
+	background-color: #fff;
+}
+#auto-bid-setting2 .content .leftcs{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#auto-bid-setting2 .content .padb .orange{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #FD6530;
+	margin-left: .7rem;
+}
+#auto-bid-setting2 .content .mar{
+	margin: .6rem 0;
+}
+#auto-bid-setting2 .content .flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#auto-bid-setting2 .content .flex input{
+	width: 20%;
+	font-size: .75rem;
+	line-height: .75rem;
+	text-align: center;
+}
+#auto-bid-setting2 .content .flex input:first-of-type{
+	text-align: left;
+}
+#auto-bid-setting2 .content .investh{
+	padding: 0 1rem;
+	align-items: flex-start;
+	-webkit-align-items: flex-start;
+}
+#auto-bid-setting2 .content .investh .warp{
+	width: 70%;
+	float: right;
+	flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+}
+#auto-bid-setting2 .content .investh .wbluebg{
+	width: 3rem;
+	font-size: .65rem;
+	line-height: .65rem;
+	color: #fff;
+	text-align: center;
+	padding: .3rem 0;
+	background: #3096FD;
+	border-radius: .25rem ; 
+	margin-bottom: .5rem;
+}
+#auto-bid-setting2 .content .investh .hb{
+	width: 3rem;
+	font-size: .65rem;
+	line-height: .65rem;
+	color: rgb(0, 0, 0);
+	text-align: center;
+	padding: .3rem 0;
+	background: rgb(255, 255, 255);
+	border-radius: .25rem ; 
+	margin-bottom: .5rem;
+}
+
+#auto-bid-setting2 .content .autobid{
+	padding: 0 1rem;
+	margin: 1.7rem 0 .6rem;
+}
+#auto-bid-setting2 .content  .borderb{
+	border-bottom: 1px solid #DCDCDC;
+}
+#auto-bid-setting2 .content  .borderb .dc{
+	position: absolute;
+	right: 0;
+	color: #999;
+	font-size: .8rem;
+}
+
+#auto-bid-setting2 .savest{
+	height: 1.75rem;
+	font-size: .75rem;
+	line-height: .75rem;
+	padding: .5rem 0;
+	border-radius: .2rem;
+	margin:1rem .6rem .7rem;
+	background: #3096FD;
+}
+#auto-bid-setting2 .instr{
+	color: #FD3052;
+}
+#auto-bid-setting2 .pickerArea{
+	position: relative;
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+	padding: .6rem 0 .6rem .6rem !important;
+}
+#auto-bid-setting2 .lotteryB{
+	position: absolute;
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+	right: 40%;
+	z-index: 3;
+}
+#auto-bid-setting2  #picker{
+	position: absolute;
+	right: .7rem;
+	width: 70%;
+	font-size: .75rem;
+	padding: 0;
+	text-align: right;
+	z-index: 2;
+	/*margin-right: .2rem;*/
+}
+.myPicker .bar{
+	background-color:#3096FD ;
+	color: #fff;
+}
+.myPicker .picker-items-col {
+	color:#f00;
+	width:100%!important;
+}
+.picker-modal .bar .title{
+	color: #fff !important;
+}
+.bar .button-link{
+	color: #fff !important;
+}

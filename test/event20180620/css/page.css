@@ -1,0 +1,313 @@
+@charset "utf-8";
+/*#yearReport2017*/
+.eventBody {
+	padding-top: 70px;
+}
+
+.eventBody .linkRow {
+	display: none;
+}
+
+.eventBody .header {
+	display: block;
+}
+
+.eventBody .footer {
+	display: block;
+}
+#event20180620 {
+	background:#FBF4D8;
+}
+#event20180620 > div {
+	width:100%;
+	max-width: 1920px;
+	min-width: 1200px;
+	margin:0 auto;
+	padding:.01px;
+	position: relative;
+}
+#event20180620 .inner-box {
+	position: relative;
+	width:1200px;
+	height:100%;
+	margin:0 auto;
+}
+#event20180620 .header {
+	background: url(../img/web/1.png) no-repeat scroll top center;
+	height:800px;
+}
+
+#event20180620 .header .pos01 {
+	position: absolute;
+	right:60px;
+	bottom: 140px;
+	margin:0;
+	font-size: 18px;
+	color:#000;
+}
+
+#event20180620 .area01 {
+	background: url(../img/web/2.png) no-repeat scroll top center;
+	height:1100px;
+}
+
+#event20180620 .area01 .pos01 {
+	position: absolute;
+	top:396px;
+	left:108px;
+	width: 378px;
+	color:#4B2C10;
+}
+#event20180620 .area01 .pos01 p:nth-child(1){
+	text-indent: -999px;
+	background: url(../img/web/hello.png) no-repeat scroll top center;
+	height: 23px;
+	width: 197px;
+}
+
+#event20180620 .area01 .pos01 button{
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	text-indent: -9999px;
+	border: none;
+	background: url(../img/web/login.png) no-repeat scroll top center;
+	width: 159px;
+	height: 75px;
+	outline: 0;
+}
+#event20180620 .area01 .pos03{
+	position: absolute;
+	top:386px;
+	left:108px;
+	width: 378px;
+	color:#4B2C10;
+}
+#event20180620 .area01 .pos03 .integral{
+	background: url(../img/web/integral.png) no-repeat scroll top center;
+	width: 216px;
+	height: 52px;
+	display: block;
+	line-height: 46px;
+	text-align: center;
+	color: #EDC879;
+	font-size: 18px;
+}
+#event20180620 .area01 .pos03 p:nth-child(1){
+	text-indent: -999px;
+	background: url(../img/web/hello.png) no-repeat scroll top center;
+	height: 23px;
+	width: 197px;
+}
+
+#event20180620 .area01 .pos03 div{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#event20180620 .area01 .pos03 div .loginw{
+	text-indent: -999px;
+	background: url(../img/web/loginWin_af.png) no-repeat scroll top center;
+	display: block;
+	width: 93px;
+	height: 74px;
+	margin: 0 auto;
+}
+#event20180620 .area01 .pos03 div p{
+	text-align: center;
+	margin-top: 4px;
+	font-size: 18px;
+}
+
+#event20180620 .area01 .pos02{
+	position: absolute;
+	top:438px;
+	right: 104px;
+	height: 450px;
+	width: 430px;
+}
+#event20180620 .area01 .pos02 div{
+	display: inline-block;
+	width: 142px;
+	height: 228px;
+	padding-top: 153px;
+}
+#event20180620 .area01 .pos02 button{
+	border: none;
+	outline: 0;
+	width: 142px;
+	background: url(../img/web/notify_btn.png) no-repeat scroll top center;
+	height: 40px;
+	color:#F3D180;
+	margin-left: 2px;
+}
+
+
+#event20180620 .loginWin,
+#event20180620 .conversionWin,
+#event20180620 .notifyWin {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top:0; left:0;
+	width: 100%; height: 100%;
+	z-index: 400;
+}
+
+#event20180620  .conversionWin  .conversionBkg{
+	background: url(../img/web/conversionBkg.png) no-repeat scroll top center;
+	background-size: 100%;
+	width:344px;
+	height:170px;
+	margin:0 auto;
+	margin-top: 320px;
+	position: relative;
+	padding:20px;
+	text-align: center;
+	padding-top: 30px;
+}
+#event20180620  .conversionWin  .conversionBkg p{
+	font-size: 18px;
+	color: #280D06;
+}
+#event20180620  .conversionWin  .conversionBkg button{
+	border: none;
+	outline: 0;
+	text-indent: -9999px;
+}
+#event20180620  .conversionWin  .conversionBkg .conversion_affirm{
+	background: url(../img/web/affirm.png) no-repeat scroll top center;
+	width: 124px;
+	height: 47px;
+}
+#event20180620  .conversionWin  .conversionBkg .conversion_close{
+	background: url(../img/web/close.png) no-repeat scroll top center;
+	width: 124px;
+	height: 47px;
+}
+#event20180620 .loginWin .loginBkg {
+	background: url(../img/web/loginwin_bg.png) no-repeat scroll top center;
+	background-size: 100%;
+	width:340px;
+	height:450px;
+	margin:0 auto;
+	margin-top: 90px;
+	padding-top: 104px;
+	/* padding-right: 60px; */
+	position: relative;
+}
+
+#event20180620 .loginWin .inputBox {
+	width:260px;
+	height:46px;
+	margin:0 auto;
+	position: relative;
+	margin-bottom: 18px;
+}
+
+input::-webkit-input-placeholder{
+    color:#641015;
+    opacity: 1;
+}
+input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color:#641015;
+    opacity: 1;
+}
+input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color:#641015;
+    opacity: 1;
+}
+input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color:#641015;
+    opacity: 1;
+}
+
+#event20180620 .loginWin .inputBox input {
+	border: 0;
+	border-radius: 0;
+	background: url(../img/web/loginWin_input.png) no-repeat scroll top center;
+	background-size: 100%;
+	position: absolute;
+	top:0; left:0;
+	width:100%;
+	height:100%;
+	font-size: 18px;
+	line-height: 30px;
+	padding:0 15px;
+	color:#641015;
+	outline: 0;
+}
+#event20180620 .loginWin .inputBox:nth-child(3) input{
+	background: url(../img/web/loginWin_input2.png) no-repeat scroll top center;
+	width: 160px;
+}
+#event20180620 .loginWin .inputBox:nth-child(3) button{
+	background: url(../img/web/loginWin_verify.png) no-repeat scroll top center;
+	width: 98px;
+	color: #F3D180;
+}
+#event20180620 .loginWin .codeBox button {
+	color:#641015;
+	font-size: 18px;
+	line-height: 48px;
+	position: absolute;
+	top:0;right:0;
+	bottom: 0;
+	width:120px;
+	background: transparent;
+	border:0;
+	outline: 0;
+	padding:0;
+}
+
+#event20180620 .loginWin .codeBox span {
+	color:#F3D180;
+	font-size: 18px;
+	line-height: 48px;
+	position: absolute;
+	top:0;right:-12px;
+	bottom: 0;
+	width:120px;
+	display: block;
+	text-align: center;
+}
+
+#event20180620 .loginWin .btnSubmit {
+	margin:0 auto;
+	margin-top: 30px;
+	width:100%;
+	text-align: center;
+}
+
+#event20180620 .loginWin .btnSubmit button {
+	background: url(../img/web/loginWin_btn.png) no-repeat scroll top center;
+	width:159px;
+	height:75px;
+	background-size: 100%;
+	text-indent: -999px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	outline: 0;
+	border-radius: 0;
+}
+
+#event20180620 .loginWin .btnClose {
+	position: absolute;
+	top:9px;
+	right:-20px;
+	margin:0;
+}
+
+#event20180620 .loginWin .btnClose button {
+	background: url(../img/web/loginWin_close.png) no-repeat scroll top center;
+	width:52px;
+	height:52px;
+	background-size: 100%;
+	text-indent: -999px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	outline: 0;
+	border-radius: 0;
+}

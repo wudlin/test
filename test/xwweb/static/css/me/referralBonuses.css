@@ -1,0 +1,76 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#referralBonuses  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#referralBonuses  header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#referralBonuses  header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#referralBonuses .content .fixed{
+	width: 100%;
+	position: fixed;
+}
+#referralBonuses .content .bg{
+	background-color: #fff;
+}
+#referralBonuses .content .flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#referralBonuses .content .w15{
+	width: 15%;
+}
+#referralBonuses .content .w20{
+	width: 20%;
+}
+#referralBonuses .content .w30{
+	width: 30%;
+}
+#referralBonuses .content .w35{
+	width: 35%;
+}
+#referralBonuses .content .flex>div{
+	font-size: .75rem;
+	line-height: .75rem;
+	text-align: center;
+}
+#referralBonuses .content .rb-head{
+	padding:.5rem 0rem;
+}
+
+#referralBonuses .content .rb-head>div{
+	color: #666;
+}
+#referralBonuses .content .rb-list{
+	margin-top: 1.75rem;
+	padding: 0 .6rem;
+}
+#referralBonuses .content .rb-list .borderb{
+	border-bottom: 1px solid #DCDCDC;
+}
+#referralBonuses .content .rb-list .flex{
+	padding: .825rem 0;
+}
+#referralBonuses .content .rb-list .flex>div{
+	color: #333;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

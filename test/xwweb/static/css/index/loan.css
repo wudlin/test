@@ -1,0 +1,76 @@
+*{
+	font-family: PingFang-SC-Regular;
+}
+#loan>header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#loan>header>h1{
+	color:#fff;
+	line-height: 2.4rem;
+}
+#loan>header>a{
+	width: 1.1rem;
+	height: 1.1rem;
+	color:#fff;
+	padding: 0;
+	top: calc(1.2rem - 0.55rem);
+}
+#loan>header>a.xwsd-menu{
+	background-image: url(../../img/common/menu-@1x.png);
+	background-position: right center;
+	background-size: 100% 100%;
+}
+#loan .content  .list-block{
+	margin:.6rem 0 .75rem 0;
+}
+#loan .content .content-block{
+	padding: 0 .6rem;
+	margin: .75rem 0;
+}
+#loan .content .content-block>a{
+	background-color: #3096FD;
+}
+#loan .content .item-content .label{
+	color: #333;
+	font-size: .75rem;
+}
+#loan .content .item-input>input{
+	font-size: .75rem;
+	text-align: right;
+}
+
+#loan .content .vcode .label{
+	width: 25% ;
+}
+#loan .content .vcode .item-input{
+	display: flex;
+	display: -webkit-flex;
+	/*justify-content: space-between;*/
+	/*width: 75%;*/
+}
+#loan .content .vcode .item-input #vcode{
+	display: inline-block;
+	width: 50%;
+}
+#loan .content .vcode .reset{
+	display: inline-block;
+	position: relative;
+	width: 50%;
+	height: 1.5rem;
+	color: #666;
+	font-size: .75rem;
+	text-align: right;
+	line-height: 1.5rem;
+	/*vertical-align: middle;*/
+	top: 0.325rem;
+	border-left: 1px solid #DCDCDC;
+	margin-left: .625rem;
+}
+#loan .content-block a.sure{
+	height: 1.75rem;
+	border-radius: .875rem;
+	background-color: #3096FD;
+	font-size: .75rem;
+	line-height: 1.75rem;
+}

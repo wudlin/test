@@ -1,0 +1,92 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#application-bid  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border-bottom: none;
+}
+#application-bid header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#application-bid header h1.title{
+	height: 2.4rem;
+	font-size: .9rem;
+	line-height: 2.4rem;
+	color:#fff;
+}
+#application-bid .applb{
+	background-color: #fff;
+	padding: 0.1px .6rem;
+	margin-top: .6rem;
+}
+#application-bid .applb .flex{
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items: center;
+}
+#application-bid .applb .marl{
+	margin-left: .5rem;
+}
+#application-bid .applb .mar{
+	margin:.75rem 0;
+}
+#application-bid .applb .lefttitle{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#application-bid .applb .resm{
+	font-size: 0;
+}
+#application-bid .applb .resm .item-input select{
+	width: 5.3rem;
+	height: 1.25rem;
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#application-bid .applb .resm .item-input select option{
+	padding: 0;
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#application-bid .applb .invesh .month{
+	font-size: 0;
+}
+#application-bid .applb .invesh label:nth-child(2n){
+	margin: 0 1.2rem;
+}
+#application-bid .applb .invesh label .fzm{
+	font-size: .75rem;
+	margin-left: .2rem;
+}
+#application-bid label.label-checkbox i.icon-form-checkbox{
+	border-radius: .2rem;
+}
+#application-bid input{
+	height: 1.5rem;
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#application-bid .content .apply{
+	height: 1.75rem;
+	font-size: .75rem;
+	line-height: 1.75rem;
+	background-color: #3096FD;
+	border-radius: .2rem;
+	margin: .6rem;
+	
+}
+#application-bid .investlimit{
+	width: 8.7rem;
+}

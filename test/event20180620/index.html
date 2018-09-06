@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
+    <title>夏季大回馈 积分Fun开花</title>
+    <meta name="keywords" content="融资租赁,车贷平台,网贷投资,车贷p2p,小微时贷,网贷理财,车贷金融,质押标,抵押标">
+		<meta name="description" content="小微时贷是福建首家第三方资金托管的P2P车贷平台.500万风险拨备金,年华收益19.2%致力于运营安全透明的互联网融资租赁车贷平台.网贷投资理财,就选小微时贷！">
+    <link href="static/css/app.0397c1a8131f822b1907096afaa1a952.css" rel="stylesheet">
+    <!-- 当前页面的CSS -->
+    <link href="css/page.css" rel="stylesheet">
+  </head>
+  <body data-type="web">
+    <div id="xwsdMain">
+      <!-- 这里的id是否修改随意，没有绑定样式 -->
+      <div id="eventPage" class="eventBody">
+        <header id="headPart" class="header">
+          <div class="navRow clearfix">
+            <h1><a href="https://www.xwsd.com">小微时贷</a></h1>
+            <h2>江西银行存管</h2>
+            <ul class="mainNav pull-right list-inline">
+              <li class="active"><a href="https://www.xwsd.com">首页</a></li>
+              <li class="menu ">
+                <a href="https://www.xwsd.com/odd/list">我要投资</a>
+                <ul class="subMenu list-unstyled">
+                  <li><a href="https://www.xwsd.com/odds">投资列表</a></li>
+                  <li><a href="https://www.xwsd.com/crtr/list">债权转让</a></li>
+                  <li><a href="https://www.xwsd.com/plans">预投计划</a></li>
+                </ul>
+              </li>
+              <li><a href="https://user.xwsd.com/page/nact380/index.html">新人福利</a></li>
+              <li><a href="https://www.xwsd.com/guide">新手指引</a></li>
+              <li class="menu ">
+                <a href="https://www.xwsd.com/safe">信息披露</a>
+                <ul class="subMenu list-unstyled">
+                  <li><a href="https://www.xwsd.com/about/info">信披中心</a></li>
+                  <li><a href="https://www.xwsd.com/safe">安全保障</a></li>
+                  <li><a href="https://www.xwsd.com/about">关于我们</a></li>
+                </ul>
+              </li>
+              <li><a href="https://user.xwsd.com">我的账户</a></li>
+            </ul>
+          </div>
+        </header>
+        
+        <!-- 主要页面区域 START -->
+        <section id="event20180620">
+		  		<div class="header">
+            <div class="inner-box">
+            </div>    
+          </div>
+		  		<div class="area01">
+            <div class="inner-box hidden" data-vue="userArea">
+              <div class="pos01" v-if="!isLogin">
+                <p>尊敬的用户，您好！</p>
+                <p>登陆后可查看您的积分。</p>
+                <button type="button" @click="showLogin">立即登录</button>
+              </div>
+              <div class="pos02">
+                <div v-for="j in giftList">
+                  <button @click="conversion(j.v,j.s)">{{slicemoney(j.v)}}兑换</button>
+                </div>
+              </div>
+              <div class="pos03" v-if="isLogin">
+                  <p>尊敬的用户，您好！</p>
+                  <p>您目前的积分为：</p>
+                  <p class="integral">{{slicemoney(integral)}}积分</p>
+                  <div>
+                    <q class="loginw">v</q>
+                    <!-- <p>读取用户名</p> -->
+                    <p>{{username}}</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <section class="loginWin hidden" data-vue="loginWin">
+            <div class="loginBkg">
+              <p class="inputBox">
+                <input type="text" placeholder="账号" v-model="form.username" />
+              </p>
+              <p class="inputBox">
+                <input type="password" placeholder="密码" v-model="form.password" />
+              </p>
+              <p class="inputBox codeBox">
+                <input type="text" placeholder="短信验证码" v-model="form.smsCode" />
+                <button type="button" @click="sendCode" v-if="second < 1">发送</button>
+                <span v-else>{{second}} 秒后重发</span>
+              </p>
+              <p class="btnSubmit">
+                <button type="button" @click="submit">立即登录</button>
+              </p>
+              <p class="btnClose">
+                <button type="button" @click="close">关闭</button>
+              </p>
+            </div>
+          </section>
+          <section class="conversionWin hidden" data-vue="conversionWin">
+              <div class="conversionBkg">
+                <template v-if="conversionw==false">
+                  <p>您确定要兑换吗？</p>
+                  <p>兑换后将减少相应积分</p>
+                  <button class="conversion_affirm" @click="affirm">确认</button>
+                  <button class="conversion_close" @click="close">取消</button>
+                </template>
+                <template v-else>
+                  <p>您已兑换成功</p>
+                  <p> 可进入“我的卡券”页面查看</p>
+                  <button class="conversion_affirm" @click="affirm_off">确认</button>
+                  </template>
+              </div>
+            </section>
+		  	</section>
+        <!-- 主要页面区域 END -->
+      
+        <footer id="footPart" class="footer">
+    
+        <div class="fMain">
+          <div class="row">
+            <ul class="list-unstyled fLeft col-xs-4">
+              <dl class="col-xs-4">
+                <dt>关于小微</dt>
+                <dd>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.xwsd.com/about">关于我们</a></li>
+                    <!-- <li><a href="https://www.xwsd.com/about/contact">联系我们</a></li> -->
+                    <!-- <li><a href="http://bbs.xwsd.com">小微社区</a></li> -->
+                    <li><a href="https://www.xwsd.com/guide/help">常见问题</a></li>
+                  </ul>
+                </dd>
+              </dl>
+              <dl class="col-xs-4">
+                <dt>真实可靠</dt>
+                <dd>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.xwsd.com/safe/risk">风险提示</a></li>
+                    <li><a href="https://www.xwsd.com/safe/law">法律保障</a></li>
+                    <!-- <li><a href="https://www.xwsd.com/about/branch">实体经营</a></li> -->
+                  </ul>
+                </dd>
+              </dl>
+              <dl class="col-xs-4">
+                <dt>我要投资</dt>
+                <dd>
+                  <ul class="list-unstyled">
+                    <li><a href="https://www.xwsd.com/about/fee">收费标准</a></li>
+                    <li><a href="javascript:;" data-func="calc">网贷工具</a></li>
+                  </ul>
+                </dd>
+              </dl>
+            </ul>
+            <div class="fCenter col-xs-4 row">
+              <div class="right col-xs-6 text-center">
+                <div class="text-center">扫描下载</div>
+                <img src="https://asset.xwsd.com/dist/www/static/android.png" alt="安卓APP二维码">
+                <div class="text-center">安卓APP</div>
+              </div>
+              <div class="left col-xs-6 text-center">
+                <div>扫描下载</div>
+                <img src="https://asset.xwsd.com/dist/www/static/ios.png" alt="IOS APP二维码">
+                <div>IOS APP</div>
+              </div>
+            </div>
+            <div class="fRight col-xs-4">
+              <div class="sec1 text-left">咨询/投诉/举报电话 </div>
+              <div class="sec2 text-left">（工作时间：9:00-21:00）</div>
+              <div class="sec3 text-left">400-186-9996</div>
+              <div class="sec4 text-left">地址：福州市台江区鳌江路万达广场甲A写字楼5楼 </div>
+              <div class="sec5">
+                <a href="http://webscan.360.cn/index/checkwebsite/url/www.xwsd.com" target="_blank"><img src="https://asset.xwsd.com/dist/www/static/webscan.png" alt="360安全网站检测"></a>
+                <a href="http://v.pinpaibao.com.cn/authenticate/cert/?site=www.xwsd.com&amp;at=business" target="_blank"><img src="https://asset.xwsd.com/dist/www/static/web.png" alt="安全联盟行业认证"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fRecord"><p>© 2015-2017 福建小微时贷科技发展有限公司 闽ICP备14018647号</p> <p>网络借贷有风险，投资需谨慎</p></div>
+        
+        </footer>
+        <aside data-vue="aside"></aside>
+      </div>
+    </div>
+    <!-- 发标预告和右下角功能是公共模块 -->
+    <script type="text/vue" id="vueTpl_aside">
+      <!-- 右下角功能区 -->
+      <div class="sidePanel">
+        <ul class="list-unstyled">
+          <li><button type="button" class="calc" @click="calcVisible = true">网贷工具</button></li>
+          <li><button type="button" class="gotop" @click="gotop">返回首页</button></li>
+        </ul>
+      </div>
+      <!-- 理财计算器 -->
+      <el-dialog title="计算器" :visible.sync="calcVisible" width="30%">
+        <el-form ref="calcForm" :model="calcForm" label-width="100px">
+          <el-form-item label="借款期限">
+            <el-input v-model="calcForm.period">
+              <el-select v-model="calcForm.periodType" slot="append" style="width:80px;">
+                <el-option label="月" value="month"></el-option>
+                <el-option label="周" value="week"></el-option>
+              </el-select>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="借款年利率">
+            <el-input v-model="calcForm.yearRate">
+              <span slot="append" class="calcUnit">%</span>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="借款金额">
+            <el-input v-model="calcForm.account">
+              <span slot="append" class="calcUnit">元</span>
+            </el-input>
+          </el-form-item>
+          <el-form-item label="还款方式">
+            <el-select v-model="calcForm.repayType" style="width:100%;">
+              <el-option label="先息后本" value="1"></el-option>
+              <el-option label="等额本息" value="2"></el-option>
+              <el-option label="等额本金" value="3"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" :loading="calcLoading" @click="calcSubmit">计算</el-button>
+            <el-button @click="calcVisible = false">关闭</el-button>
+          </el-form-item>
+        </el-form>
+        <el-alert
+            title="温馨提示"
+            type="warning"
+            description="目前支持网站正在使用的四种还款方式：按天到期还款、按月分期还款、按月还息到期还本、到期还本息。"
+            show-icon :closable="false">
+        </el-alert>
+      </el-dialog>
+      <el-dialog title="计算结果" :visible.sync="calcResultVisible" width="40%" class="calcResultDialog">
+        <h3>借款概述</h3>
+        <div class="row">
+          <dl class="col-xs-6">
+            <dt>综合年利率</dt>
+            <dd>{{calcResult.yearRate}}%</dd>
+          </dl>
+          <dl class="col-xs-6">
+            <dt>综合月利率</dt>
+            <dd>{{calcResult.monthRate}}%</dd>
+          </dl>
+          <dl class="col-xs-6">
+            <dt>综合周利率</dt>
+            <dd>{{calcResult.weekRate}}%</dd>
+          </dl>
+          <dl class="col-xs-6">
+            <dt>综合天利率</dt>
+            <dd>{{calcResult.dayRate}}%</dd>
+          </dl>
+          <dl class="col-xs-6">
+            <dt>共需还本息</dt>
+            <dd>{{calcResult.sumTotal}}元</dd>
+          </dl>
+          <dl class="col-xs-6">
+            <dt>共计付出利息</dt>
+            <dd>{{calcResult.sumInterest}}元</dd>
+          </dl>
+        </div>
+        <h3>还款明细</h3>
+        <el-table :data="calcResult.list" border stripe height="300" style="width: 100%;">
+          <el-table-column prop="period" label="期数"></el-table-column>
+          <el-table-column prop="capital" label="当期本金"></el-table-column>
+          <el-table-column prop="interest" label="当期利息"></el-table-column>
+          <el-table-column prop="total" label="当期总额"></el-table-column>
+          <el-table-column prop="remain" label="余额"></el-table-column>
+        </el-table>
+      </el-dialog>
+    </script>
+    <script src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js" data-main="js/page"></script>
+  </body>
+</html>

@@ -1,0 +1,249 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#debtCession  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#debtCession  header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#debtCession  header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#debtCession .content .buttons-tab{
+	position: fixed;
+	width: 100%;
+}
+#debtCession .content .buttons-tab .button{
+	padding: 0 .2rem;
+}
+#debtCession .content .tab{
+	margin-top: 2.6rem;
+}
+#debtCession .content .tabs .card{
+	border-radius: .2rem;
+}
+#debtCession .content .tabs .card-header{
+	padding: .5rem;
+}
+#debtCession .content .tabs .card-content-inner{
+	padding:.5rem 0 .5rem .25rem;
+}
+#debtCession .content .tabs .a-flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+#debtCession .content .tabs .a-flex .left{
+	width: 5.675rem;
+}
+#debtCession .content .tabs .a-flex .right{
+	width: calc(100% - 5.675rem);
+	padding:0 .5rem;
+}
+#debtCession .content .tabs .a1 .a11{
+	background-image: url(../../img/me/debtCession/tou.png);
+	background-repeat: no-repeat;
+	background-size:100%  100%;
+}
+#debtCession .content .tabs .a-flex .left{
+	height: 1.75rem;
+	margin:.1rem 0;
+	padding:.35rem 0 .35rem 2rem;
+	color: #fff;
+	font-size: .45rem;
+}
+#debtCession .content .tabs .a-flex .left>div{
+	line-height: .55rem;
+}
+#debtCession .content .tabs .a1 .a12{
+	border-bottom: 1px solid #D6D6D6;
+}
+#debtCession .content .tabs .a1 .a12 .a12-name{
+	font-size: .6rem;
+	line-height: .6rem;
+}
+#debtCession .content .tabs .a1 .a12 .a12-number{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	margin: .475rem 0;
+}
+#debtCession .content .tabs .a1 .a12 .a12-number .money{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+/*#debtCession .content .tabs .a1 .a12 .a12-number .money span{
+	color: #FD871F;
+	line-height: .75rem;
+}*/
+#debtCession .content .tabs .a1 .a12 .a12-number .time{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+}
+#debtCession .content .tabs .a2{
+	margin-top: .5rem;
+}
+#debtCession .content .tabs .a2 .a21{
+	background-image: url(../../img/me/debtCession/ben.png);
+	background-repeat: no-repeat;
+	background-size:100%  100%;
+}
+#debtCession .content .tabs .a2 .a21>div{
+	line-height: 1.1rem;
+	vertical-align: middle;
+}
+#debtCession .content .tabs .a2 .a22{
+	font-size: .55rem;
+}
+#debtCession .content .tabs .a2 .a22>div{
+	line-height: .65rem;
+}
+#debtCession .content .tabs .a2 .a22 .a22-profit{
+	margin-top:.5rem ;
+}
+#debtCession .content .tabs .a2 .a22 .a22-profit>span{
+	color: #FD871F;
+}
+#debtCession .content .tabs .card-footer{
+	padding: .3rem .75rem;
+	justify-content: space-between;
+}
+#debtCession .content .tabs .card-footer>a{
+	display: block;
+	position: absolute;
+	right: .75rem;
+	color: #000;
+	font-size: .6rem;
+	line-height: .6rem;
+	text-align: center;
+	padding:.425rem 1.675rem;
+	border: 1px solid rgba(0,0,0,.3);
+	border-radius: .4rem;
+}
+
+#debtCession .content #tab1 .card-footer>a,#debtCession .content #tab4 .card-footer>a{
+	display: block;
+	position: inherit;
+	right: 0;
+	width: 4.5rem;
+	padding:.425rem 0rem;
+}
+#debtCession .content #tab4 .card-header .text{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#debtCession .content #tab4 .card-header .num{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+}
+#debtCession .content #tab4 .card-content-inner{
+	padding: .5rem;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+}
+#debtCession .content #tab4 .card-content-inner .cf{
+	font-size: .55rem;
+	line-height: 1.05rem;
+}
+#debtCession .content #tab4 .card-footer{
+	justify-content: center !important;
+}
+#debtCession #screen{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.1);
+	z-index: 10;
+	display: none;
+}
+#debtCession #screenTip{
+	position: fixed;
+	z-index: 11;
+	width: 90%;
+	height: 11rem;
+	background-color: #fff;
+	top: calc(50% - 5.5rem);
+	left: 5%;
+	border-radius: .25rem;
+	display: none;
+}
+#debtCession #screenTip .st1{
+	margin: 1.5rem .65rem 1.2rem;
+}
+#debtCession #screenTip .st2{
+	margin: 1.2rem .65rem;
+}
+#debtCession #screenTip .st3{
+	margin: 1.2rem .65rem 1.5rem;
+}
+#debtCession #screenTip .st3 .inputCode{
+	width: 5rem;
+	height: .75rem;
+	margin: 0 .4rem;
+	padding: 0;
+	border: none;
+	border-bottom: 1px solid #B0B0B0;
+}
+#debtCession #screenTip .st3 .blue{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #3096FD;
+}
+#debtCession #screenTip .st {
+	font-size: .75rem;
+}
+#debtCession #screenTip .st .text{
+	line-height: .75rem;
+	color: #333;
+}
+#debtCession #screenTip .st .orange{
+	line-height: .75rem;
+	color: #FD871F;
+	margin-left: .8rem;
+}
+#debtCession #screenTip .st  .yuan{
+	line-height: .75rem;
+	color: #000;
+}
+#debtCession #screenTip .st4{
+	height: 2.25rem;
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
+	-webkit-align-items: center;
+	border-top: 1px solid #3096FD;
+}
+#debtCession #screenTip .st4>div{
+	width: 50%;
+	text-align: center;
+	font-size: .75rem;
+}
+#debtCession #screenTip .st4 .st-cancel{
+	color: #666;
+}
+#debtCession #screenTip .st4 .st-sure{
+	background-color: #3096FD;
+	color: #fff;
+	line-height: 2.25rem;
+	border-radius: 0 0 .25rem 0;
+}

@@ -1,0 +1,147 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+#investManage header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	
+}
+#investManage header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#investManage header h1.title{
+	height: 2.4rem;
+	line-height: 2.4rem;
+	color:#fff;
+	font-size: .9rem;
+}
+#investManage .content{
+	top: 2.4rem;
+}
+#investManage .content .buttons-tab{
+	position: fixed;
+	width: 100%;
+	z-index: 100006;
+	top: 2.35rem;
+}
+#investManage .content .buttons-tab .button{
+	height: 2.2rem;
+	line-height: 2.2rem;
+	font-size: 0.9rem;
+	padding: 0;
+}
+#investManage .content .button.bor:after{
+	content: '';
+	width: 1px;
+	height: 1.6rem;
+	background-color: #D6D6D6;
+	position: absolute;
+	right: -1px;
+	top: .3rem;
+}
+#investManage .content .tabs .card:first-of-type{
+	margin-top: 2.6rem;
+}
+#investManage .content .tabs .card{
+	border-radius: .2rem;
+}
+
+#investManage .content .tabs .card-content-inner{
+	padding:.5rem 0 .5rem .25rem;
+}
+#investManage .content .tabs .a-flex{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+#investManage .content .tabs .a-flex .left{
+	width: 5.675rem;
+}
+#investManage .content .tabs .a-flex .right{
+	width: calc(100% - 5.675rem);
+	padding:0 .5rem;
+}
+#investManage .content .tabs .a1 .a11{
+	background-image: url(../../img/me/investManage/tou.png);
+	background-repeat: no-repeat;
+	background-size:100%  100%;
+}
+#investManage .content .tabs .a-flex .left{
+	height: 1.75rem;
+	margin:.1rem 0;
+	padding:.35rem 0 .35rem 2rem;
+	color: #fff;
+	font-size: .45rem;
+}
+#investManage .content .tabs .a-flex .left>div{
+	line-height: .55rem;
+}
+#investManage .content .tabs .a1 .a12{
+	border-bottom: 1px solid #D6D6D6;
+}
+#investManage .content .tabs .a1 .a12 .a12-name{
+	font-size: .6rem;
+	line-height: .6rem;
+}
+#investManage .content .tabs .a1 .a12 .a12-number{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	margin: .475rem 0;
+}
+#investManage .content .tabs .a1 .a12 .a12-number .money{
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #333;
+}
+#investManage .content .tabs .a1 .a12 .a12-number .time{
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #666;
+}
+#investManage .content .tabs .a2{
+	margin-top: .5rem;
+}
+#investManage .content .tabs .a2 .a21{
+	background-image: url(../../img/me/investManage/ben.png);
+	background-repeat: no-repeat;
+	background-size:100%  100%;
+}
+#investManage .content .tabs .a2 .a21>div{
+	line-height: 1rem;
+	vertical-align: middle;
+}
+#investManage .content .tabs .a2 .a22{
+	font-size: .55rem;
+}
+#investManage .content .tabs .a2 .a22>div{
+	line-height: .65rem;
+}
+#investManage .content .tabs .a2 .a22 .a22-profit{
+	margin-top:.5rem ;
+}
+#investManage .content .tabs .a2 .a22 .a22-profit>span{
+	color: #FD871F;
+}
+#investManage .content .tabs .card-footer{
+	padding: .3rem .75rem;
+}
+#investManage .content .tabs .card-footer>a{
+	display: block;
+	position: absolute;
+	color: #000;
+	font-size: .6rem;
+	line-height: .6rem;
+	text-align: center;
+	padding:.425rem 1.675rem;
+	border: 1px solid rgba(0,0,0,.3);
+	border-radius: .4rem;
+}
+#investManage .content .tabs .card-footer>a.fRight{
+	right: .75rem;
+}

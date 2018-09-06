@@ -1,0 +1,112 @@
+*{
+	font-family: PingFang-SC-Regular;
+}
+body.with-panel-right-cover .panel-right{
+	-webkit-transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%,0,0);
+}
+.panel.panel-right.panel-cover{
+	right: -100%;
+}
+.bar-nav~.content {
+     top: 2.4rem; 
+}
+#loan>header{
+	height: 2.4rem;
+	background-color: #3096FD;
+}
+#loan>header>h1{
+	color:#fff;
+	line-height: 2.4rem;
+}
+#loan>header>a{
+	width: 1.1rem;
+	height: 1.1rem;
+	color:#fff;
+	padding: 0;
+	top: calc(1.2rem - 0.55rem);
+}
+#loan>header>a.xwsd-menu{
+	width: 2.4rem;
+	height: 2.4rem;
+	background-size: 1.1rem 1.1rem;
+	background-image: url(../../../../static/img/common/menu-@1x.png);
+	background-position: right center;
+	background-repeat: no-repeat;
+	top: 0;
+}
+#loan .content  .list-block{
+	margin:.6rem 0 .75rem 0;
+}
+#loan .content .content-block{
+	padding: 0 .6rem;
+	margin: .75rem 0;
+}
+#loan .content .content-block>a{
+	background-color: #3096FD;
+}
+#loan .content .item-content .label{
+	color: #333;
+	font-size: .75rem;
+}
+#loan .content .item-input>input{
+	font-size: .75rem;
+	text-align: right;
+}
+
+#loan .content .vcode .label{
+	width: 25% ;
+}
+#loan .content .vcode .item-input{
+	display: flex;
+	display: -webkit-flex;
+	/*justify-content: space-between;*/
+	/*width: 75%;*/
+}
+#loan .content .vcode .item-input #vcode{
+	display: inline-block;
+	width: 50%;
+}
+#loan .content .vcode .reset{
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	width: 35%;
+	/*height: 90%;*/
+	color: #666;
+	font-size: .75rem;
+	text-align: right;
+	line-height: 2.1rem;
+	/*vertical-align: middle;*/
+	/* top: 0.325rem; */
+	border-left: 1px solid #DCDCDC;
+	/* margin-left: .625rem; */
+	padding-right: .6rem;
+}
+
+#loan .content-block a.sure{
+	height: 1.75rem;
+	border-radius: .875rem;
+	background-color: #3096FD;
+	font-size: .75rem;
+	line-height: 1.75rem;
+}
+#loan .gainVcode{
+	width:40%;
+	text-align: right;
+	font-size: .75rem;
+	line-height: 2.1rem;
+	color: #3096FD;
+	padding-left:1.5rem;
+	white-space: nowrap;
+	/* border-left: 1px solid #8B8B8B; */
+}
+/*#loan .gainVcodes{
+	display: none;
+	width:40%;
+	text-align: right;
+	font-size: .75rem;
+	line-height: 2.1rem;
+	color: rgba(102,102,102,1);
+	white-space: nowrap;
+}*/

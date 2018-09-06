@@ -1,0 +1,71 @@
+*{
+	font-family: PingFang-SC-Regular;
+	box-sizing: border-box;
+}
+.bar-nav~.content {
+	 top: 2.4rem; 
+	 z-index: 900;
+}
+#dcDetail  header{
+	height: 2.4rem;
+	background-color: #3096FD;
+	border-bottom: none;
+}
+#dcDetail header a{
+	color:#fff;
+	height: 2.4rem;
+	line-height: 1.4rem;
+}
+#dcDetail header h1.title{
+	height: 2.4rem;
+	font-size: .9rem;
+	line-height: 2.4rem;
+	color:#fff;
+}
+#dcDetail .dcd-head,#dcDetail  tr{
+	display: flex;
+	display: -webkit-flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	z-index: 1000;
+}
+#dcDetail .content table{
+	width: 100%;
+	margin-top: 1.75rem;
+}
+#dcDetail .content table tr{
+	margin:0 .6rem;
+	padding: .5rem 0;
+	border-bottom: 1px solid #DCDCDC;
+}
+#dcDetail  .dcd-head{
+	position: fixed;
+	top: 2.2rem;
+	width: 100%;
+	background-color: #fff;
+	font-size: .75rem;
+	line-height: .75rem;
+	color: #666;
+	padding: .5rem .6rem;
+}
+#dcDetail  .dcd-head>div{
+	width: 28%;
+	text-align: center;
+}
+#dcDetail  .dcd-head>div:first-child{
+	width: 16%;
+}
+#dcDetail .content table tr td{
+	width: 28%;
+	font-size: .6rem;
+	line-height: .6rem;
+	color: #333;
+	text-align: center;
+}
+#dcDetail .content table tr td:first-child{
+	width: 16%;
+}
+#dcDetail .detail{
+	text-align: center;
+	padding-top: .6rem;
+}
