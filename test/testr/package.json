@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@antv/data-set": "^0.9.5",
+    "@antv/g2": "^3.2.7",
+    "assert": "^1.4.1",
+    "babel-polyfill": "^6.26.0",
+    "copy-to-clipboard": "^3.0.8",
+    "object.assign": "^4.1.0",
+    "qs": "^6.5.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router": "^4.3.1",

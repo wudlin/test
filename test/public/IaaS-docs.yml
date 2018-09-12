@@ -1,0 +1,2115 @@
+openapi: 3.0.0
+
+info:
+  title: IaaS API Docs
+  description: Describes how to use iaas API
+  version: 1.3.66
+
+servers:
+  - url: http://iaas.{Region}.{Domain}.com/api/v3.0
+    description: Platform api endpoint
+    variables:
+      Region:
+        default: cn-fuzhou-0  # test env
+        enum:
+          - cn-fuzhou-2       # prod env
+          - cn-fuzhou-0       # test env
+        description: 区域等同于地域,物理隔离
+      Domain:
+        default: 173ops
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  headers:  # 公共响应头
+    X-Request-ID:
+      description: 唯一请求ID
+      schema:
+        type: string
+        format: uuid
+        example: d32099ba-25c1-4088-a20c-18a978434cb2
+  responses:
+    asyncTask:   # 异步任务响应
+      description: >
+        操作成功
+          * TaskUUID为字符串表示返回异步任务ID
+          * TaskUUID为null表示无异步任务
+      headers:
+        $ref: '#/components/headers'
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/response'
+              - type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      TaskUUID:
+                        type: string
+                        example: 571bd171-c994-41da-b1d0-4f8fc800405b
+  parameters:
+    pageNumber:
+      name: pgnum
+      in: query
+      description: 页码
+      schema:
+        type: integer
+    pageSize:
+      name: pgsize
+      in: query
+      description: 每页记录数
+      schema:
+        type: integer
+    state:
+      name: state
+      in: query
+      description: 过滤状态
+      schema:
+        type: integer
+    uuidInQuery:
+      name: uuid
+      in: query
+      schema:
+        type: string
+        format: uuid
+      description: 实例ID
+    uuidInPath:
+      name: uuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: 实例ID
+    internal:
+      name: internal
+      in: query
+      schema:
+        type: boolean
+      description: 过滤内/外网
+    zone:
+      name: zone_uid
+      in: query
+      schema:
+        type: string
+      description: 可用区ID
+    instance:
+      name: ins
+      in: query
+      schema:
+        type: string
+      description: 所属实例UUID
+    vol_category:
+      name: category
+      in: query
+      schema:
+        $ref: '#/components/schemas/Disk/properties/category'
+      description: >
+        过滤磁盘类型:
+          * 10 - SAS本地盘
+          * 11 - SAS云盘
+          * 20 - SSD本地盘
+          * 21 - SSD云盘
+    stateVm:
+      name: state
+      in: query
+      schema:
+        $ref: '#/components/schemas/Server/properties/state'
+      description:  >
+        过滤实例状态:
+          * 0 - 处理中
+          * 1 - 正在运行
+          * 2 - 阻塞
+          * 3 - 暂停
+          * 4 - 关闭中
+          * 5 - 已关闭
+          * 6 - 崩溃（少见）
+          * 7 - 挂起（少见）
+
+  schemas:
+    Vpc:
+      type: object
+      description: Vpc数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d12721f9-78f3-4f1a-95e3-ba319c3b3945
+          description: 实例ID
+        name:
+          type: string
+          description: vpc名称
+        cidr:
+          type: string
+          example: 10.0.0.0/8
+          description: CIDR
+        description:
+          type: string
+          example: create by api gateway
+          description: 实例描述
+        internal:
+          type: boolean
+          description: 是否是内网VPC
+        state:
+          type: integer
+          enum: [0, 1]
+          description: >
+            VPC状态:
+              * 0 - pending
+              * 1 - 正常
+        user:
+          type: string
+          description: 创建人
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 创建时间
+    Subnet:
+      type: object
+      description: 子网数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d12721f9-78f3-4f1a-95e3-ba319c3b3945
+          description: 实例ID,等同于 SerialNumber
+        name:
+          type: string
+          description: 实例名称
+        vni:
+          type: integer
+          description: 对应专有网络的vni号 | 对应经典网络的vlan号
+        cidr:
+          type: string
+          description: CIDR地址
+        dns:
+          type: string
+          description: 网段DNS IP
+        gateway:
+          type: string
+          description: 网段网关 IP
+        vpcRef:
+          type: string
+          description: 关联的vpc uuid
+        available_addrs:
+          type: integer
+          description: 可用地址数
+        state:
+          type: integer
+          enum: [-1, 0, 1, 2]
+          description: >
+            子网状态:
+              * -1 - 已删除
+              * 0 - pending
+              * 1 - 离线
+              * 2 - 正常
+        user:
+          type: string
+          description: 创建人
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 创建时间
+        description:
+          type: string
+          example: create by api gateway
+          description: 描述
+        internal:
+          type: boolean
+          description: 是否是内网
+        exclude:
+          type: string
+          description: 排除地址范围
+        host:
+          type: string
+          description: DHCP服务器SN
+        zone_uid:
+          type: string
+          example: a
+          description: 所属可用区
+    Server:
+      type: object
+      description: 虚机实例数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: 9e1715c2-e065-49f6-88e5-92b0e7b6e1f4
+          description: 实例ID,等同于 SerialNumber
+        sid:
+          type: string
+          example: odqgju49.kvm.173ops.com
+          description: 实例名称,等同于 HostName
+        description:
+          type: string
+          example: create by api gateway
+          description: 实例描述
+        zone_uid:
+          type: string
+          example: a
+          description: 实例所在区域可用区
+        image:
+          type: string
+          example: centos7.3-64bit-public
+          description: 实例使用的镜像名
+        imageRef:
+          type: string
+          format: uuid
+          example: fc38e884-b5c5-44d4-af14-ef695842186d
+          description: 实例使用的镜像ID
+        flavor:
+          type: string
+          example: 2U / 2G
+          description: 实例规格名称
+        flavorRef:
+          type: string
+          example: ecs.n0.small
+          description: 实例规格ID
+        volRef:
+          type: array
+          example: ["f0afab5d-bd21-46ba-86f3-187c26cb507a", "36a77489-4640-4dc9-8a49-fb303541cf66"]
+          description: 实例的磁盘ID
+          items:
+            type: string
+        nicRef:
+          type: array
+          example: ["04e46a60-8a2d-4d2e-90d7-64bb3df17430"]
+          description: 实例的网卡ID
+          items:
+            type: string
+        nics:
+          type: array
+          description: 实例的网卡信息
+          items:
+            type: object
+            properties:
+              ip:
+                type: string
+                description: IP
+                example: 10.5.216.171
+              internal:
+                type: boolean
+                description: 是否内网
+                example: true
+              netType:
+                type: string
+                description: 网络类型
+                enum: [vpc, vlan]
+                example: vpc
+              dev:
+                type: string
+                description: 设备名称
+                example: vmeth0-odqgju49
+        state:
+          type: integer
+          enum: [0, 1, 2, 3, 4, 5, 6, 7]
+          description: >
+            过滤实例状态:
+              * 0 - 处理中
+              * 1 - 正在运行
+              * 2 - 阻塞
+              * 3 - 暂停
+              * 4 - 关闭中
+              * 5 - 已关闭
+              * 6 - 崩溃（少见）
+              * 7 - 挂起（少见）
+        host:
+          type: string
+          description: 所属宿主SN
+        volType:
+          type: integer
+          enum: [0, 1]
+          description: >
+            存储类型:
+              * 0 - 本地盘
+              * 1 - 云盘
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 实例创建时间
+    Disk:
+      type: object
+      description: 磁盘数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d12721f9-78f3-4f1a-95e3-ba319c3b3945
+          description: 实例ID,等同于 SerialNumber
+        category:
+          type: string
+          enum: ['10', '11', '20', '21']
+          description: >
+            过滤磁盘类型:
+              * 10 - SAS本地盘
+              * 11 - SAS云盘
+              * 20 - SSD本地盘
+              * 21 - SSD云盘
+        size:
+          type: integer
+          description: 磁盘容量(GB)
+        state:
+          type: integer
+          enum: [0, 1, 2]
+          description: >
+            磁盘状态:
+              * 0 - pending
+              * 1 - 空闲
+              * 2 - 已挂载
+        dev:
+          type: string
+          example: vdb
+          description: 设备号
+        imageRef:
+          type: string
+          format: uuid
+          example: d1b42efc-4c91-4f90-9844-dca6eca0e059
+          description: 镜像ID
+        ins:
+          type: string
+          format: uuid
+          example: 1363b599-5847-493f-97ad-ff04bd426c45
+          description: 磁盘所属vm实例的UUID,空字符串表示未关联实例
+        location:
+          type: string
+          description: 磁盘所在集群(ceph) | 磁盘所在主机(本地盘)
+        pool:
+          type: string
+          description: 磁盘所在存储池(ceph) | 磁盘所在目录(本地盘)
+        parent:
+          type: string
+          description: 父镜像名
+        tt_io_sec:
+          type: integer
+          description: 读写IOPS
+        tt_mb_sec:
+          type: integer
+          description: 读写MB/s
+        description:
+          type: string
+          example: create by api gateway
+          description: 实例描述
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 实例创建时间
+        zone_uid:
+          type: string
+          example: a
+          description: 实例所在区域可用区
+    Snapshot:
+      type: object
+      description: 快照数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d12721f9-78f3-4f1a-95e3-ba319c3b3945
+          description: 实例ID,等同于 SerialNumber
+        volRef:
+          type: string
+          description: 母盘名称
+        name:
+          type: string
+          description: 快照名称
+        itype:
+          type: integer
+          enum: [0, 1, 2]
+          description: >
+            镜像类型:
+              * 0 - 全局镜像
+              * 1 - 可用区镜像
+              * 2 - 普通快照
+        state:
+          type: integer
+          enum: [0, 1]
+          description: >
+            快照状态:
+              * 0 - pending
+              * 1 - 正常
+        description:
+          type: string
+          description: 快照描述信息
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 实例创建时间
+    Nic:
+      type: object
+      description: 网卡数据结构
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          example: d12721f9-78f3-4f1a-95e3-ba319c3b3945
+          description: 实例ID,等同于 SerialNumber
+        name:
+          type: string
+          description: 名称
+        ip:
+          type: string
+          description: IP
+        mac:
+          type: string
+          description: MAC
+        vni:
+          type: integer
+          description: 同网卡所属Subnet的VNI
+        ins:
+          type: string
+          description: 所属实例的UUID
+        state:
+          type: integer
+          enum: [-1, 0, 1, 2]
+          description: >
+            网卡状态:
+              * -1 - 空闲
+              * 0 - pending
+              * 1 - 离线
+              * 2 - 在线
+        dev:
+          type: string
+          description: 设备号
+        created_at:
+          type: string
+          format: date-time
+          example: "2018-02-13T02:28:28+00:00"
+          description: 实例创建时间
+        internal:
+          type: boolean
+          description: 是否是内网VPC
+        netType:
+          type: integer
+          description: 网络类型 1 专有网络 | 2 经典网络
+        dns:
+          type: string
+          description: 网段DNS IP
+        gateway:
+          type: string
+          description: 网段网关 IP
+        bw_in:
+          type: number
+          description: 限制入带宽
+        bw_out:
+          type: number
+          description: 限制出带宽
+        flexible:
+          type: boolean
+          description: 是否是弹性IP
+        zone_uid:
+          type: string
+          example: a
+          description: 实例所在区域可用区
+    resCount:
+      type: object
+      description: 资源统计数据
+      properties:
+        total:
+          type: integer
+          example: 10
+          description: 总量
+        sold:
+          type: integer
+          example: 10
+          description: 卖出量
+        sold_percent:
+          type: string
+          example: 100%
+          description: 卖出率
+        used:
+          type: integer
+          example: 10
+          description: 实际用量
+        used_percent:
+          type: string
+          example: 100%
+          description: 实际使用率
+    response:
+      type: object
+      # description: 通用响应
+      properties:
+        ok:
+          type: boolean
+          description: 请求是否正常
+    response_pg:
+      allOf:
+        - $ref: '#/components/schemas/response'
+        - type: object
+          # description: 通用响应(带分页)
+          properties:
+            pg:
+              type: object
+              description: page info
+              properties:
+                size:
+                  type: integer
+                  example: 10
+                  description: page size
+                page:
+                  type: integer
+                  example: 1
+                  description: current page number
+                pages:
+                  type: integer
+                  example: 2
+                  description: total page number
+                total:
+                  type: integer
+                  example: 17
+                  description: total records number
+                next_num:
+                  type: integer
+                  example: 2
+                  description: next page number
+                prev_num:
+                  type: integer
+                  example: null
+                  description: prev page number
+                has_next:
+                  type: boolean
+                  example: true
+                  description: whether has next page
+                has_prev:
+                  type: boolean
+                  example: false
+                  description: whether has prev page
+
+
+security:
+  - basicAuth: []
+
+paths:
+  /vpc:
+    get:
+      tags: [VPC相关]
+      summary: Get list of VPC
+      description: 获得VPC实例列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回VPC列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Vpc'
+    post:
+      tags: [VPC相关]
+      summary: Create a vpc
+      description: 创建一个VPC
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cidr
+              properties:
+                cidr:
+                  type: string
+                  description: CIDR信息
+                description:
+                  type: string
+                  description: 实例描述信息
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          VpcUUID:
+                            type: string
+                            description: vpc uuid
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+  /vpc/{uuid}:
+    get:
+      tags: [VPC相关]
+      summary: Get vpc detail by uuid
+      description: 获得VPC详情
+      parameters:
+      - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Vpc'
+    put:
+      tags: [VPC相关]
+      summary: Update vpc attr
+      description: 更新VPC属性
+      parameters:
+      - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - description
+              properties:
+                description:
+                  type: string
+                  description: 描述信息
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [VPC相关]
+      summary: Remove vpc by uuid
+      description: 删除vpc
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            $ref: '#/components/headers'
+  /vsw:
+    get:
+      tags: [虚拟交换机相关]
+      summary: Get list of VSW
+      description: 获得VSW列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/internal'
+        - name: vpcRef
+          in: query
+          schema:
+            type: string
+          description: 过滤VPC UUID
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回VSW列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Subnet'
+    post:
+      tags: [虚拟交换机相关]
+      summary: Create a vsw
+      description: 创建一个VSW
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cidr
+              - vpcRef
+              - dns
+              properties:
+                cidr:
+                  type: string
+                  description: CIDR信息
+                vpcRef:
+                  type: string
+                  format: uuid
+                  description: vsw所属的VPC UUID
+                dns:
+                  type: string
+                  description: 网段DNS IP
+                exclude:
+                  type: string
+                  description: 排除IP地址
+                zone_uid:
+                  type: string
+                  description: vsw所属的可用区
+                description:
+                  type: string
+                  description: 实例描述信息
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          VSwitchUUID:
+                            type: string
+                            description: vsw uuid
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+  /vsw/{uuid}:
+    get:
+      tags: [虚拟交换机相关]
+      summary: Get vsw detail by uuid
+      description: 获得VSW详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Subnet'
+    put:
+      tags: [虚拟交换机相关]
+      summary: Update vsw attr
+      description: 更新VSW属性
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dns:
+                  type: string
+                  description: 配置DNS IP
+                exclude:
+                  type: string
+                  description: 配置排除IP
+                description:
+                  type: string
+                  example: test
+                  description: 实例描述信息
+      responses:
+        '200':
+          # $ref: '#/components/responses/asyncTask'
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [虚拟交换机相关]
+      summary: Remove vsw by uuid
+      description: >
+        删除VSW
+          * 存在关联网卡的VSW无法删除
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            $ref: '#/components/headers'
+  /vlan:
+    get:
+      tags: [经典网络相关]
+      summary: Get list of vlan
+      description: 获得Vlan列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/internal'
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回Vlan列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Subnet'
+    post:
+      tags: [经典网络相关]
+      summary: Create a vlan
+      description: 创建一个Vlan
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cidr
+              - vlanid
+              - dns
+              properties:
+                cidr:
+                  type: string
+                  description: CIDR信息
+                vlanid:
+                  type: integer
+                  description: Vlan ID
+                dns:
+                  type: string
+                  description: 网段DNS IP
+                zone_uid:
+                  type: string
+                  description: vlan所属的可用区
+                description:
+                  type: string
+                  description: 实例描述信息
+                init:
+                  type: boolean
+                  description: true (默认) 完整配置模式 | false 只添加记录
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          VlanId:
+                            type: integer
+                            description: vlan id
+                          VlanUUID:
+                            type: string
+                            description: vlan uuid
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+  /vlan/{uuid}:
+    get:
+      tags: [经典网络相关]
+      summary: Get vlan detail by uuid
+      description: 获得Vlan详情
+      parameters:
+      - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+                - type: object
+                  properties:
+                    data:
+                      $ref: '#/components/schemas/Subnet'
+    put:
+      tags: [经典网络相关]
+      summary: Update vlan attr
+      description: 更新Vlan属性
+      parameters:
+      - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dns:
+                  type: string
+                  description: 配置DNS IP
+                exclude:
+                  type: string
+                  description: 配置排除IP
+                description:
+                  type: string
+                  example: test
+                  description: 实例描述信息
+      responses:
+        '200':
+          # $ref: '#/components/responses/asyncTask'
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [经典网络相关]
+      summary: Remove vlan by uuid
+      description: >
+        删除Vlan
+          * 存在关联网卡的Vlan无法删除
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            $ref: '#/components/headers'
+  /vlan/{uuid}/init:
+    put:
+      tags: [经典网络相关]
+      summary: Init vlan config
+      description: 初始化vlan配置
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+
+  /server:
+    get:
+      tags: [虚机实例相关]
+      summary: Get list of vm
+      description: 获得虚机实例列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - $ref: '#/components/parameters/stateVm'
+        - name: sid
+          in: query
+          schema:
+            type: string
+          description: 过滤vm名称
+        - name: flavorRef
+          in: query
+          schema:
+            type: string
+          description: 过滤配置
+        - name: vpcRef
+          in: query
+          schema:
+            type: string
+          description: 过滤VPC UUID
+        - name: subnetRef
+          in: query
+          schema:
+            type: string
+          description: 过滤子网 UUID
+        - name: ip
+          in: query
+          schema:
+            type: string
+          description: 过滤ip
+        - name: host
+          in: query
+          schema:
+            type: string
+          description: 过滤宿主SN
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回虚拟机列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Server'
+    post:
+      tags: [虚机实例相关]
+      summary: Create a vm
+      description: 创建一台虚拟机
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - flavorRef
+              - imageRef
+              - zone_uid
+              properties:
+                flavorRef:
+                  type: string
+                  example: ecs.n1.tiny
+                  description: 实例资源规格ID
+                imageRef:
+                  type: string
+                  format: uuid
+                  example: fc38e884-b5c5-44d4-af14-ef695842186d
+                  description: 镜像ID
+                description:
+                  type: string
+                  description: 实例描述信息
+                subnetRef:
+                  type: string
+                  format: uuid
+                  example: c26efcdd-37d7-4ae7-b4a5-cf8b03c43f01
+                  description: 子网ID
+                category:
+                  $ref: '#/components/schemas/Disk/properties/category'
+                zone_uid:
+                  type: string
+                  example: a
+                  description: 可用区ID
+                host:
+                  type: string
+                  example: ABCDEF
+                  description: 指定宿主SN (默认自动选择)
+                password:
+                  type: string
+                  example: abc.ABC.123
+                  description: 指定虚拟机的密码
+                autoStart:
+                  type: boolean
+                  description: 创建完成后是否开机
+                on_sriov:
+                  type: boolean
+                  description: 是否为sriov模式(默认为False)
+                on_sg:
+                  type: boolean
+                  description: 是否开启安全组(默认为True)
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          NicIp:
+                            type: string
+                            description: 实例第一张网卡ip
+                            example: 10.1.1.1
+                          NicMac:
+                            type: string
+                            description: 实例第一张网卡mac
+                            example: 52:54:1e:23:f3:1a
+                          NicUUID:
+                            type: string
+                            format: uuid
+                            description: 实例第一张网卡ID
+                            example: f9bb6bf7-8e69-4184-9dfa-61a1974cc44e
+                          InstanceUUID:
+                            type: string
+                            format: uuid
+                            description: 实例ID
+                            example: c5ef2757-c2d7-4e85-99ae-bec4a23eccb2
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+                            example: 4ad9cffa-d4a2-418e-8ab7-f50880943b45
+  /server/{uuid}:
+    get:
+      tags: [虚机实例相关]
+      summary: Get vm detail by uuid
+      description: 获得虚机详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Server'
+    put:
+      tags: [虚机实例相关]
+      summary: Update vm by uuid
+      description: 更新虚机属性
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  example: test
+                  description: 实例描述信息
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [虚机实例相关]
+      summary: Remove vm by uuid
+      description: >
+        删除虚机
+          * 关联的磁盘/网卡自动解绑
+          * 非弹性网卡自动删除, 弹性网卡变成空闲状态
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            $ref: '#/components/headers'
+
+  /server/{uuid}/action:
+    post:
+      tags: [虚机实例相关]
+      summary: Operate vm
+      description: 操作一台虚拟机
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - do
+              properties:
+                do:
+                  type: string
+                  enum:
+                  - start
+                  - stop
+                  - destroy
+                  - reboot
+                  - reset
+                  - pause
+                  - resume
+                  - ctrl_alt_del
+                  example: start
+                  description: >
+                    操作类型如下:
+                      * start - 启动
+                      * stop - 正常关机
+                      * destroy - 强制关机
+                      * reboot - 正常重启
+                      * pause - 暂停
+                      * resume - 恢复
+                      * ctrl_alt_del - 发送Ctrl+alt+del
+                preTask:
+                  type: string
+                  description: 前置任务ID
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+  /server/{uuid}/migrate:
+    put:
+      tags: [虚机实例相关]
+      summary: Migrate vm
+      description: 迁移一台虚拟机
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                  default: auto
+                  example: auto
+                  description: 目标宿主的SN号（默认值auto, 表示自动选择）
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+
+  /server/{uuid}/flavor:
+    put:
+      tags: [虚机实例相关]
+      summary: Set cpu/mem of vm
+      description: 设置vm的cpu/内存参数
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                flavorRef:
+                  type: string
+                  example: ecs.n0.large
+                  description: 配置套餐对应的ID
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+  /server/{uuid}/pswd:
+    put:
+      tags: [虚机实例相关]
+      summary: Set password of vm system
+      description: 设置vm系统的密码,需配合安装qemu-agent
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: string
+                  example: root
+                  description: 用户名
+                password:
+                  type: string
+                  example: abcABC.123
+                  description: 密码
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+  /server/{uuid}/screenshot:
+    get:
+      tags: [虚机实例相关]
+      summary: Get screenshot of vm
+      description: 获得vm当前终端的截图
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: 截图获取成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                    description: 图片对应的base64编码值
+
+  /vol:
+    get:
+      tags: [磁盘相关]
+      summary: Get list of vol
+      description: 获得磁盘列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/instance'
+        - name: is_local
+          in: query
+          schema:
+            type: boolean
+          description: true 本地盘 | false 云盘
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回磁盘列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Disk'
+    post:
+      tags: [磁盘相关]
+      summary: Create a vol
+      description: >
+        创建一块磁盘
+          * 基于镜像创建,需要提供imageRef参数
+          * 创建空磁盘,需要提供size参数
+          * 如果创建本地盘,必须指定ins参数绑定具体vm实例
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - imageRef
+              - description
+              properties:
+                imageRef:
+                  type: string
+                  format: uuid
+                  description: 镜像ID（与size参数二选一）
+                size:
+                  type: integer
+                  description: 空磁盘大小（与imageRef参数二选一）
+                description:
+                  type: string
+                  description: 实例描述信息
+                category:
+                  $ref: '#/components/schemas/Disk/properties/category'
+                zone_uid:
+                  type: string
+                  description: 可用区ID
+                ins:
+                  type: string
+                  format: uuid
+                  description: 指定要挂载的实例UUID
+                total_bytes_sec:
+                  type: integer
+                  description: 限制读写速率(B/s)
+                total_iops_sec:
+                  type: integer
+                  description: 限制读写次数(IOPS)
+                preTask:
+                  type: string
+                  format: uuid
+                  description: 指定前置任务ID
+            examples:
+              image:
+                value:
+                  imageRef: fc38e884-b5c5-44d4-af14-ef695842186d
+                  description: test
+                  category: 11
+                  zone_uid: a
+              size:
+                value:
+                  size: 100
+                  description: test
+                  category: 11
+                  zone_uid: a
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          DiskUUID:
+                            type: string
+                            description: 磁盘UUID
+                            example: f9bb6bf7-8e69-4184-9dfa-61a1974cc44e
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+                            example: 4ad9cffa-d4a2-418e-8ab7-f50880943b45
+  /vol/{uuid}:
+    get:
+      tags: [磁盘相关]
+      summary: Get vol detail by uuid
+      description: 获得磁盘详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Disk'
+    put:
+      tags: [磁盘相关]
+      summary: Set vol attr
+      description: 更新磁盘配置
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ins:
+                  type: string
+                  description: 提供vm实例UUID表示挂载磁盘到vm; 空字符串表示解绑磁盘
+                size:
+                  type: integer
+                  description: 修改磁盘容量
+                total_bytes_sec:
+                  type: integer
+                  description: 限制读写速率(B/s)
+                total_iops_sec:
+                  type: integer
+                  description: 限制读写次数(IOPS)
+                description:
+                  type: string
+                  description: 修改描述信息
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+    delete:
+      tags: [磁盘相关]
+      summary: Remove vol by uuid
+      description: >
+        删除磁盘
+          * 磁盘处于空闲状态才可删除
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            $ref: '#/components/headers'
+  /vol/{uuid}/snapshot:
+    get:
+      tags: [磁盘相关]
+      summary: Get snapshot list of vol by uuid
+      description: 获得磁盘关联的快照列表
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Snapshot'
+  /snapshot:
+    post:
+      tags: [快照相关]
+      summary: Create a snapshot
+      description: 创建快照
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - volRef
+              - name
+              properties:
+                volRef:
+                  type: string
+                  description: 被打快照的母盘UUID
+                name:
+                  type: string
+                  description: 快照名称
+                description:
+                  type: string
+                  description: 实例描述信息
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          SnapshotUUID:
+                            type: string
+                            description: 快照UUID
+                            example: f9bb6bf7-8e69-4184-9dfa-61a1974cc44e
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+                            example: 4ad9cffa-d4a2-418e-8ab7-f50880943b45
+  /snapshot/{uuid}:
+    get:
+      tags: [快照相关]
+      summary: Get snapshot detail by uuid
+      description: 获得快照详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Snapshot'
+    put:
+      tags: [快照相关]
+      summary: Set snapshot attr
+      description: 变更快照属性
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: 实例描述信息
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [快照相关]
+      summary: Remove snapshot by uuid
+      description: 删除快照
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+
+  /snapshot/{uuid}/rollback:
+    put:
+      tags: [快照相关]
+      summary: Rollback snapshot
+      description: 快照还原
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                branch:
+                  type: boolean
+                  default: false
+                  description: 是否在还原时创建分支(仅针对本地盘有效)
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+
+  /nic:
+    get:
+      tags: [网卡相关]
+      summary: Get list of nic
+      description: 获得网卡列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - name: netType
+          in: query
+          schema:
+            type: integer
+          description: >
+            过滤专有网络/经典网络
+              * 1 - 专有网络
+              * 2 - 经典网络
+        - name: flexible
+          in: query
+          schema:
+            type: boolean
+          description: 过滤弹性网卡
+        - name: ip
+          in: query
+          schema:
+            type: string
+          description: 过滤IP
+        - name: mac
+          in: query
+          schema:
+            type: string
+          description: 过滤MAC
+        - name: state
+          in: query
+          schema:
+            type: integer
+          description: >
+            过滤网卡状态
+              * -1 - 空闲
+              * 0 - pending
+              * 1 - 离线
+              * 2 - 在线
+        - $ref: '#/components/parameters/internal'
+        - $ref: '#/components/parameters/instance'
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回网卡列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Nic'
+    post:
+      tags: [网卡相关]
+      summary: Create a nic
+      description: >
+        创建一张网卡
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subnetRef
+              properties:
+                subnetRef:
+                  type: string
+                  format: uuid
+                  description: 网卡所属子网的UUID
+                ip:
+                  type: string
+                  description: 指定网卡IP
+                gateway:
+                  type: string
+                  description: 指定网卡的网关,默认同所属子网的网关
+                dns:
+                  type: string
+                  description: 指定网卡的DNS,默认同所属子网的DNS
+                ins:
+                  type: string
+                  format: uuid
+                  description: 指定要挂载的实例UUID
+                flexible:
+                  type: boolean
+                  description: 设置为弹性IP
+                zone_uid:
+                  type: string
+                  description: 可用区ID
+                bw_in:
+                  type: integer
+                  description: 限制入带宽
+                bw_out:
+                  type: integer
+                  description: 限制出带宽
+                on_sriov:
+                  type: boolean
+                  description: 是否为sriov模式(默认为False)
+                on_sg:
+                  type: boolean
+                  description: 是否开启安全组(默认为True)
+                preTask:
+                  type: string
+                  format: uuid
+                  description: 指定前置任务ID
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          NicIp:
+                            type: string
+                            description: 网卡IP
+                          NicMac:
+                            type: string
+                            description: 网卡MAC
+                          NicUUID:
+                            type: string
+                            description: 网卡UUID
+                          TaskUUID:
+                            type: string
+                            format: uuid
+                            description: 任务ID
+                            example: 4ad9cffa-d4a2-418e-8ab7-f50880943b45
+  /nic/{uuid}:
+    get:
+      tags: [网卡相关]
+      summary: Get nic by uuid
+      description: 获得网卡详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Nic'
+    put:
+      tags: [网卡相关]
+      summary: Set nic by uuid
+      description: 更新网卡配置
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ins:
+                  type: string
+                  description: 提供vm实例UUID表示挂载网卡到vm; 空字符串表示解绑网卡
+                gateway:
+                  type: string
+                  description: 指定网卡的网关,默认同所属子网的网关
+                dns:
+                  type: string
+                  description: 指定网卡的DNS,默认同所属子网的DNS
+                bw_in:
+                  type: integer
+                  description: 限制入带宽
+                bw_out:
+                  type: integer
+                  description: 限制出带宽
+                on_sg:
+                  type: boolean
+                  description: 开启/禁用安全组
+      responses:
+        '200':
+          $ref: '#/components/responses/asyncTask'
+    delete:
+      tags: [网卡相关]
+      summary: Remove nic by uuid
+      description: >
+        删除网卡
+          * 网卡处于空闲状态才可删除
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+
+  /vip:
+    get:
+      tags: [VIP相关]
+      summary: Get list of vip
+      description: 获得vip列表, 默认带分页, 每页10条记录
+      parameters:
+        - $ref: '#/components/parameters/uuidInQuery'
+        - $ref: '#/components/parameters/zone'
+        - name: ip
+          in: query
+          schema:
+            type: string
+          description: 过滤IP
+        - $ref: '#/components/parameters/internal'
+        - $ref: '#/components/parameters/pageNumber'
+        - $ref: '#/components/parameters/pageSize'
+      responses:
+        '200':
+          description: 返回vip列表
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response_pg'
+                  - type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Nic'
+    post:
+      tags: [VIP相关]
+      summary: Create a vip
+      description: >
+        创建一个vip
+      requestBody:
+        description: ''
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - subnetRef
+              properties:
+                subnetRef:
+                  type: string
+                  format: uuid
+                  description: VIP所属子网的UUID
+                ip:
+                  type: string
+                  description: 指定VIP
+      responses:
+        '201':
+          description: 创建成功
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          NicIp:
+                            type: string
+                            description: VIP
+                          NicUUID:
+                            type: string
+                            description: VIP UUID
+
+  /vip/{uuid}:
+    get:
+      tags: [VIP相关]
+      summary: Get vip by uuid
+      description: 获得VIP详情
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/Nic'
+    put:
+      tags: [VIP相关]
+      summary: Set vip by uuid
+      description: 更新VIP配置
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      requestBody:
+        description: ''
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: 更新VIP描述
+      responses:
+        '200':
+          description: Successful operation
+          headers:
+            $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/response'
+    delete:
+      tags: [VIP相关]
+      summary: Remove vip by uuid
+      description: 删除VIP
+      parameters:
+        - $ref: '#/components/parameters/uuidInPath'
+      responses:
+        '200':
+          description: The resource was deleted successfully.
+
+  /overview/res:
+    get:
+      tags: [统计信息]
+      summary: Summary info of iaas platform
+      description: 获得平台统计信息
+      parameters:
+      - name: zone_uid
+        in: query
+        description: 过滤可用区
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          # headers:
+          #   $ref: '#/components/headers'
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/response'
+                  - type: object
+                    properties:
+                      data:
+                        type: object
+                        properties:
+                          cpu:
+                            $ref: '#/components/schemas/resCount'
+                          mem:
+                            $ref: '#/components/schemas/resCount'
+                          ceph:
+                            $ref: '#/components/schemas/resCount'
+
+
+
