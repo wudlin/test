@@ -28,9 +28,6 @@ function gitCommit(time) {
         .commit('自动 commit，时间' + time,()=>{
             console.log('commit 成功')
         })
-        // .pull(['--release', 'origin', 'develop'], (e) => {
-        //     console.log('拉起 分支成功，时间：' + time)
-        // })
         .push(['-u', 'origin', 'develop'], (err) => {
             if(err){
                 //有冲突

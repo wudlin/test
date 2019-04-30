@@ -12,5 +12,6 @@ const execCMD = function (cmd) {
     })
 }
 //用&&连接多条CMD命令
-const cmd = 'git add . && git commit -m "3" && git push origin develop';
+// const cmd = 'git add . && git commit -m "3" && git push origin develop';
+const cmd = 'npm install';
 execCMD(cmd);
