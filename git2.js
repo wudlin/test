@@ -29,10 +29,12 @@ function gitCommit(time) {
         // })
         .push(['-u', 'origin', 'develop'], (e) => {
             if(e){
-                console.log(e,1);
+                // console.log(e,1);
+            simpleGit().pull(['--release', 'origin', 'develop'], (e) => {
+                console.log('拉起 分支成功，时间：' + time)
+            })
             }else{
-                console.log(e, 2);
+                console.log('commit 成功，时间：' + time)
             }
-            console.log('commit 成功，时间：' + time)
         })
 }
