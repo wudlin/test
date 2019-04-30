@@ -28,6 +28,7 @@ function gitCommit(time) {
         //     console.log('拉起 分支成功，时间：' + time)
         // })
         .push(['-u', 'origin', 'develop'], (e) => {
+            console.log(e);
             console.log('commit 成功，时间：' + time)
         })
 }
