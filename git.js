@@ -1,17 +1,41 @@
-//git目录下新建index.js
-const child_process = require("child_process");
-//定义一个执行cmd的函数
-const execCMD = function (cmd) {
-    child_process.exec(cmd, function (error, stdout, stderr) {
-        if (error) {
-            console.error('error: ' + error);
-            return;
-        }
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
+'use strict'
+
+const fs = require('fs')
+const simpleGit = require('simple-git')
+
+// 定时器
+setInterval(function () {
+    upDataFile()
+}, 1000 * 60 * 60) //时间不易太短
+
+// 修改 README 文件
+upDataFile()
+function upDataFile() {
+    const time = Date()
+    fs.appendFile(__dirname + '/README.md', '#### 自动 commit，时间:' + time + '\r\n', err => {
+        err ? console.error('缺少 README.md ') : console.log('README 文件追加成功，时间: ' + time)
+        gitCommit(time)
     })
 }
-//用&&连接多条CMD命令
-// const cmd = 'git add . && git commit -m "3" && git push origin develop';
-const cmd = 'npm install';
-execCMD(cmd);
+
+// commit 提交
+function gitCommit(time) {
+    simpleGit()
+        .add('./*',()=>{
+            console.log('add成功');            
+        })
+        // .add('text.txt')
+        .commit('自动 commit，时间' + time,()=>{
+            console.log('commit 成功')
+        })
+        .push(['-u', 'origin', 'develop'], (err) => {
+            if(err){
+                //有冲突
+                simpleGit().pull(['--release', 'origin', 'develop'], (e) => {
+                    console.log('拉起 分支成功，时间：' + time)
+                })
+            }else{
+                console.log('push 成功，时间：' + time)
+            }
+        })
+}
