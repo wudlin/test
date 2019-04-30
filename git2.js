@@ -24,9 +24,9 @@ function gitCommit(time) {
         .add('./*')
         // .add('text.txt')
         .commit('自动 commit，时间' + time)
-        .pull(['--release', 'origin', 'develop'], (e) => {
-            console.log('拉起 分支成功，时间：' + time)
-        })
+        // .pull(['--release', 'origin', 'develop'], (e) => {
+        //     console.log('拉起 分支成功，时间：' + time)
+        // })
         .push(['-u', 'origin', 'develop'], (e) => {
             console.log('commit 成功，时间：' + time)
         })
