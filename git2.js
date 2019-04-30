@@ -21,20 +21,24 @@ function upDataFile() {
 // commit 提交
 function gitCommit(time) {
     simpleGit()
-        .add('./*')
+        .add('./*',()=>{
+            console.log('add成功');            
+        })
         // .add('text.txt')
-        .commit('自动 commit，时间' + time)
+        .commit('自动 commit，时间' + time,()=>{
+            console.log('commit 成功')
+        })
         // .pull(['--release', 'origin', 'develop'], (e) => {
         //     console.log('拉起 分支成功，时间：' + time)
         // })
-        .push(['-u', 'origin', 'develop'], (e) => {
-            if(e){
-                // console.log(e,1);
-            simpleGit().pull(['--release', 'origin', 'develop'], (e) => {
-                console.log('拉起 分支成功，时间：' + time)
-            })
+        .push(['-u', 'origin', 'develop'], (err) => {
+            if(err){
+                //有冲突
+                simpleGit().pull(['--release', 'origin', 'develop'], (e) => {
+                    console.log('拉起 分支成功，时间：' + time)
+                })
             }else{
-                console.log('commit 成功，时间：' + time)
+                console.log('push 成功，时间：' + time)
             }
         })
 }
