@@ -22,6 +22,7 @@ function upDataFile() {
 function gitCommit(time) {
     simpleGit()
         .add('./*')
+        // .add('text.txt')
         .commit('自动 commit，时间' + time)
         .push(['-u', 'origin', 'develop'], (e) => {
             console.log('commit 成功，时间：' + time)
