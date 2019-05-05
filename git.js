@@ -23,8 +23,11 @@ function gitCommit(time) {
     simpleGit()
         // .init()
         // .addRemote('origin', 'git@github.com:wudlin/test.git')
-        .add('./*',()=>{
-            console.log('add成功');            
+        // .add('./*',()=>{
+        //     console.log('add成功');            
+        // })
+        .add('versions/v1.0.5', () => {
+            console.log('versions/v1.0.5 add成功');
         })
         // .add('text.txt')
         .commit('自动 commit，时间' + time,()=>{
@@ -33,7 +36,7 @@ function gitCommit(time) {
         .push(['-u', 'origin', 'develop'], (err) => {
             if(err){
                 //有冲突
-                simpleGit().pull(['--release', 'origin', 'develop'], (e) => {
+                simpleGit().pull(['--release', 'origin', 'develop/versions/v1.0.5'], (e) => {
                     console.log('拉起 分支成功，时间：' + time)
                 })
             }else{
