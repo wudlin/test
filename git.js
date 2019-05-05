@@ -4,9 +4,9 @@ const fs = require('fs')
 const simpleGit = require('simple-git')
 
 // 定时器
-setInterval(function () {
-    upDataFile()
-}, 1000 * 60 * 60) //时间不易太短
+// setInterval(function () {
+//     upDataFile()
+// }, 1000 * 60 * 60) //时间不易太短
 
 // 修改 README 文件
 upDataFile()
@@ -21,6 +21,8 @@ function upDataFile() {
 // commit 提交
 function gitCommit(time) {
     simpleGit()
+        // .init()
+        // .addRemote('origin', 'git@github.com:wudlin/test.git')
         .add('./*',()=>{
             console.log('add成功');            
         })
