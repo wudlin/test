@@ -18,7 +18,7 @@ function upDataFile() {
     })
 }
 
-// commit 提交
+// commit 提交1
 function gitCommit(time) {
     simpleGit()
         // .init()
