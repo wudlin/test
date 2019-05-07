@@ -1,0 +1,60 @@
+{
+  "name": "teat1",
+  "version": "",
+  "description": "msg",
+  "main": "dist/teat1.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "wdl",
+  "license": "ISC",
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-novnc": "^0.1.1",
+    "react-router-dom": "^4.2.2",
+    "simple-git": "^1.112.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "babel-cli": "^6.26.0",
+    "url-loader": "^1.1.2",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.0.1",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-import": "^1.6.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-standalone": "^6.26.0",
+    "bundle-loader": "^0.5.6",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "img-loader": "^3.0.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "postcss-flexbugs-fixes": "^3.3.0",
+    "postcss-loader": "^2.1.4",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.6.0",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
