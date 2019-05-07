@@ -8,7 +8,7 @@
       }
       render(){
         return (
-          <div className="react-teat1">teat1</div>
+          <div className="react-teat1">teat11</div>
         )
       }
     }
