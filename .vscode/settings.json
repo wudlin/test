@@ -1,7 +1,0 @@
-    {
-        "git.ignoreLimitWarning": true,
-        "prettier.eslintIntegration": true,
-        "editor.formatOnSave": true,
-        "javascript.format.insertSpaceBeforeFunctionParenthesis": true
-    }
-    
