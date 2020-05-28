@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .main{
+        width: 530px;
+        position: absolute;
+       top: 50%;
+       height: 150px;
+       margin-top: -75px; 
+       left: 50%;
+       margin-left: -265px;
+    }
+    img{
+        width: 46px;
+        height: 46px;
+        margin-bottom: 18px;
+    }
+    .float{
+        width: 106px;
+        text-align: center;
+        float: left;
+    }
+</style>
+<body>
+   <div class="main">
+    <p style="text-align: center;font-size: 16px;color: #666666">管理控制台不支持当前浏览器，推荐使用以下浏览器获取更好使用体验:</p>
+    
+    <div style="color: #666666;font-size: 14px;width: 530px;height:100px;margin-top:30px;";>
+       <div class="float">
+         <img src="img/Goog.png" alt="">
+         <div>谷歌浏览器</div>
+       </div> 
+       <div class="float">
+        <img src="img/Safari.png" alt="">
+        <div>Safari</div>
+      </div> 
+      <div class="float">
+        <img src="img/Ge.png" alt="">
+        <div>火狐浏览器</div>
+    </div> 
+      <div class="float">
+        <img src="img/IE.png" alt="">
+        <div>IE9.0及以上</div>
+    </div> 
+      <div class="float">
+        <img src="img/360.png" alt="">
+        <div>360浏览器极速模式</div>
+    </div> 
+     
+    </div>
+    
+</div>
+<script>
+    (function(window) {
+       if (!!window.ActiveXObject || "ActiveXObject" in window){
+               //IE兼容
+             
+   var theUA = window.navigator.userAgent.toLowerCase();
+   if ((theUA.match(/msie\s\d+/) && theUA.match(/msie\s\d+/)[0]) || (theUA.match(/trident\s?\d+/) && theUA.match(/trident\s?\d+/)[0])) {
+       var ieVersion = theUA.match(/msie\s\d+/)[0].match(/\d+/)[0] || theUA.match(/trident\s?\d+/)[0];
+       if (ieVersion <= 9) {
+      
+        if(theUA.indexOf('trident/')!=-1  &&  theUA.slice(theUA.indexOf('trident/')+8,theUA.indexOf('trident/')+9)>6){
+            window.location.href='index.html';
+                }
+       
+       }else{
+    
+           window.location.href='index.html';
+       }
+   }
+       }else{
+      
+          //360兼容
+  if(window.navigator.userAgent.indexOf('compatible') != -1){
+  
+       }else{
+        var islow = window.navigator.userAgent.indexOf('QQBrowser/');
+          if(islow!==-1){
+          if(window.navigator.userAgent.slice (islow+10,islow+12).indexOf('.')==-1) {
+             
+            if(window.navigator.userAgent.slice (islow+10,islow+12)<10){
+               
+              }else{ window.location.href='index.html';}
+          } else{
+            if(window.navigator.userAgent.slice (islow+10,islow+11)<10){
+               
+              }else{
+                window.location.href='index.html';
+              }
+          }
+            
+          }else{
+              
+            window.location.href='index.html';
+          }
+       }
+     }
+    })(window);
+</script>
+</body>
+</html>
